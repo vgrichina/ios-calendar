@@ -21,8 +21,6 @@
 		D5B46D2413CE22CD0079A9C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */; };
 		D5B46D2713CE22CD0079A9C2 /* libCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1013CE22CD0079A9C2 /* libCalendar.a */; };
 		D5B46D2D13CE22CD0079A9C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5B46D2B13CE22CD0079A9C2 /* InfoPlist.strings */; };
-		D5B46D2F13CE22CD0079A9C2 /* CalendarTests.h in Resources */ = {isa = PBXBuildFile; fileRef = D5B46D2E13CE22CD0079A9C2 /* CalendarTests.h */; };
-		D5B46D3113CE22CD0079A9C2 /* CalendarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46D3013CE22CD0079A9C2 /* CalendarTests.m */; };
 		D5B46E9A13CE24E70079A9C2 /* KWAfterAllNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E0F13CE24E70079A9C2 /* KWAfterAllNode.m */; };
 		D5B46E9B13CE24E70079A9C2 /* KWAfterEachNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E1113CE24E70079A9C2 /* KWAfterEachNode.m */; };
 		D5B46E9C13CE24E70079A9C2 /* KWAsyncVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E1313CE24E70079A9C2 /* KWAsyncVerifier.m */; };
@@ -88,6 +86,13 @@
 		D5B46ED813CE24E70079A9C2 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E9513CE24E70079A9C2 /* NSObject+KiwiStubAdditions.m */; };
 		D5B46ED913CE24E70079A9C2 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E9713CE24E70079A9C2 /* NSObject+KiwiVerifierAdditions.m */; };
 		D5B46EDA13CE24E70079A9C2 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B46E9913CE24E70079A9C2 /* NSValue+KiwiAdditions.m */; };
+		D5D427AF13CE275100A90CCC /* CXCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D427AD13CE275100A90CCC /* CXCalendarView.h */; };
+		D5D427B013CE275100A90CCC /* CXCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D427AE13CE275100A90CCC /* CXCalendarView.m */; };
+		D5D427B313CE279D00A90CCC /* CXCalendarCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D427B113CE279D00A90CCC /* CXCalendarCellView.h */; };
+		D5D427B413CE279D00A90CCC /* CXCalendarCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D427B213CE279D00A90CCC /* CXCalendarCellView.m */; };
+		D5D427BD13CE29AC00A90CCC /* CalendarViewSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D427B613CE281D00A90CCC /* CalendarViewSpec.m */; };
+		D5D427BE13CE29AC00A90CCC /* CalendarViewCellSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D427BA13CE283A00A90CCC /* CalendarViewCellSpec.m */; };
+		D5D427BF13CE2AA700A90CCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,8 +249,6 @@
 		D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		D5B46D2A13CE22CD0079A9C2 /* CalendarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalendarTests-Info.plist"; sourceTree = "<group>"; };
 		D5B46D2C13CE22CD0079A9C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D5B46D2E13CE22CD0079A9C2 /* CalendarTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarTests.h; sourceTree = "<group>"; };
-		D5B46D3013CE22CD0079A9C2 /* CalendarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarTests.m; sourceTree = "<group>"; };
 		D5B46E0B13CE24E70079A9C2 /* Kiwi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kiwi.h; path = kiwi/Kiwi/Kiwi.h; sourceTree = SOURCE_ROOT; };
 		D5B46E0C13CE24E70079A9C2 /* KiwiConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KiwiConfiguration.h; path = kiwi/Kiwi/KiwiConfiguration.h; sourceTree = SOURCE_ROOT; };
 		D5B46E0D13CE24E70079A9C2 /* KiwiMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KiwiMacros.h; path = kiwi/Kiwi/KiwiMacros.h; sourceTree = SOURCE_ROOT; };
@@ -389,6 +392,12 @@
 		D5B46E9713CE24E70079A9C2 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+KiwiVerifierAdditions.m"; path = "kiwi/Kiwi/NSObject+KiwiVerifierAdditions.m"; sourceTree = SOURCE_ROOT; };
 		D5B46E9813CE24E70079A9C2 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+KiwiAdditions.h"; path = "kiwi/Kiwi/NSValue+KiwiAdditions.h"; sourceTree = SOURCE_ROOT; };
 		D5B46E9913CE24E70079A9C2 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+KiwiAdditions.m"; path = "kiwi/Kiwi/NSValue+KiwiAdditions.m"; sourceTree = SOURCE_ROOT; };
+		D5D427AD13CE275100A90CCC /* CXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCalendarView.h; sourceTree = "<group>"; };
+		D5D427AE13CE275100A90CCC /* CXCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCalendarView.m; sourceTree = "<group>"; };
+		D5D427B113CE279D00A90CCC /* CXCalendarCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCalendarCellView.h; sourceTree = "<group>"; };
+		D5D427B213CE279D00A90CCC /* CXCalendarCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXCalendarCellView.m; sourceTree = "<group>"; };
+		D5D427B613CE281D00A90CCC /* CalendarViewSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewSpec.m; sourceTree = "<group>"; };
+		D5D427BA13CE283A00A90CCC /* CalendarViewCellSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewCellSpec.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -411,6 +420,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D427BF13CE2AA700A90CCC /* QuartzCore.framework in Frameworks */,
 				D5B46D1F13CE22CD0079A9C2 /* SenTestingKit.framework in Frameworks */,
 				D5B46D2113CE22CD0079A9C2 /* UIKit.framework in Frameworks */,
 				D5B46D2213CE22CD0079A9C2 /* Foundation.framework in Frameworks */,
@@ -517,6 +527,10 @@
 			isa = PBXGroup;
 			children = (
 				D5B46D1613CE22CD0079A9C2 /* Supporting Files */,
+				D5D427AD13CE275100A90CCC /* CXCalendarView.h */,
+				D5D427AE13CE275100A90CCC /* CXCalendarView.m */,
+				D5D427B113CE279D00A90CCC /* CXCalendarCellView.h */,
+				D5D427B213CE279D00A90CCC /* CXCalendarCellView.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -534,9 +548,9 @@
 			isa = PBXGroup;
 			children = (
 				D5B46D3A13CE24960079A9C2 /* Kiwi */,
-				D5B46D2E13CE22CD0079A9C2 /* CalendarTests.h */,
-				D5B46D3013CE22CD0079A9C2 /* CalendarTests.m */,
 				D5B46D2913CE22CD0079A9C2 /* Supporting Files */,
+				D5D427B613CE281D00A90CCC /* CalendarViewSpec.m */,
+				D5D427BA13CE283A00A90CCC /* CalendarViewCellSpec.m */,
 			);
 			path = CalendarTests;
 			sourceTree = "<group>";
@@ -707,6 +721,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D427AF13CE275100A90CCC /* CXCalendarView.h in Headers */,
+				D5D427B313CE279D00A90CCC /* CXCalendarCellView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,7 +916,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5B46D2D13CE22CD0079A9C2 /* InfoPlist.strings in Resources */,
-				D5B46D2F13CE22CD0079A9C2 /* CalendarTests.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +942,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D427B013CE275100A90CCC /* CXCalendarView.m in Sources */,
+				D5D427B413CE279D00A90CCC /* CXCalendarCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,7 +951,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5B46D3113CE22CD0079A9C2 /* CalendarTests.m in Sources */,
+				D5D427BD13CE29AC00A90CCC /* CalendarViewSpec.m in Sources */,
+				D5D427BE13CE29AC00A90CCC /* CalendarViewCellSpec.m in Sources */,
 				D5B46E9A13CE24E70079A9C2 /* KWAfterAllNode.m in Sources */,
 				D5B46E9B13CE24E70079A9C2 /* KWAfterEachNode.m in Sources */,
 				D5B46E9C13CE24E70079A9C2 /* KWAsyncVerifier.m in Sources */,
@@ -1060,7 +1078,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1079,7 +1096,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -1090,7 +1107,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1102,7 +1118,7 @@
 					"$(BUILT_PRODUCTS_DIR)/../../three20",
 					three20/Build/Products/three20,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
