@@ -10,14 +10,29 @@
 
 @implementation CXCalendarCellView
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        // Initialization code here.
+- (TTLabel *) label {
+    if (!_label) {
+        _label = [[TTLabel new] autorelease];
+        _label.frame = self.bounds;
+        _label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        [self addSubview: _label];
     }
-    
-    return self;
+
+    return _label;
+}
+
+- (NSDate *) date {
+    return _date;
+}
+
+- (void) setDate: (NSDate *) date {
+    if (![date isEqual: _date]) {
+        [_date release];
+        _date = [date retain];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        int day = [calendar components: NSDayCalendarUnit fromDate: self.date].day;
+        self.label.text = [NSString stringWithFormat: @"%d", day];
+    }
 }
 
 @end

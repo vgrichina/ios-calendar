@@ -14,14 +14,35 @@ SPEC_BEGIN(CalendarCellViewSpec)
 
 describe(@"CalendarCellView", ^{
     __block CXCalendarCellView *cellView = nil;
-    
+
     beforeEach(^{
-        cellView = [[CXCalendarCellView new] autorelease];
+        cellView = [[CXCalendarCellView alloc] initWithFrame: CGRectMake(0, 0, 100, 50)];
     });
-    
-    context(@"when foo", ^{
-        it(@"should bar", ^{
-            
+
+    context(@"when given valid date", ^{
+        beforeEach(^{
+            cellView.date = [NSDate date];
+        });
+
+        it(@"should display appropriate day label", ^{
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            NSDateComponents *components = [calendar components: NSDayCalendarUnit
+                                                       fromDate: cellView.date];
+            [cellView.label shouldNotBeNil];
+            [[cellView.label.text should] equal:
+                [NSString stringWithFormat: @"%d", components.day]];
+        });
+
+        it(@"should layout day label appropriately", ^{
+            [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
+            [[theValue(cellView.label.height) should] equal: theValue(cellView.height)];
+        });
+
+        it(@"should layout day label appropriately when frame is changed", ^{
+            cellView.width = 50;
+            cellView.height = 100;
+            [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
+            [[theValue(cellView.label.height) should] equal: theValue(cellView.height)];
         });
     });
 });

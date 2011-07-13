@@ -14,11 +14,11 @@ SPEC_BEGIN(CalendarViewSpec)
 
 describe(@"CalendarView", ^{
     __block CXCalendarView *calendarView = nil;
-    
+
     beforeEach(^{
         calendarView = [[CXCalendarView new] autorelease];
     });
-    
+
     context(@"when foo", ^{
         it(@"should bar", ^{
 
