@@ -24,7 +24,7 @@ describe(@"CalendarCellView", ^{
             cellView.date = [NSDate date];
         });
 
-        it(@"should display appropriate day label", ^{
+        it(@"displays appropriate day label", ^{
             NSCalendar *calendar = [NSCalendar currentCalendar];
             NSDateComponents *components = [calendar components: NSDayCalendarUnit
                                                        fromDate: cellView.date];
@@ -33,12 +33,12 @@ describe(@"CalendarCellView", ^{
                 [NSString stringWithFormat: @"%d", components.day]];
         });
 
-        it(@"should layout day label appropriately", ^{
+        it(@"places day label appropriately", ^{
             [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
             [[theValue(cellView.label.height) should] equal: theValue(cellView.height)];
         });
 
-        it(@"should layout day label appropriately when frame is changed", ^{
+        it(@"places day label appropriately when frame is changed", ^{
             cellView.width = 50;
             cellView.height = 100;
             [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
