@@ -10,11 +10,14 @@
 #import <Three20Style/Three20Style+Additions.h>
 
 @interface CXCalendarView : TTView {
-    TTLabel *_monthLabel;
     NSDate *_selectedDate;
+
+    TTLabel *_monthLabel;
+    TTView *_gridView;
 }
 
-@property(readonly) TTLabel *monthLabel;
 @property(retain) NSDate *selectedDate;
+@property(readonly) TTLabel *monthLabel;
+@property(readonly) TTView *gridView;
 
 @end

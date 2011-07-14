@@ -41,6 +41,14 @@ describe(@"CalendarView", ^{
             [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
             [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
         });
+
+        it(@"should have a grid view", ^{
+            [calendarView.gridView shouldNotBeNil];
+        });
+
+        it(@"should have enough cells in grid view", ^{
+            [[[calendarView.gridView should] have: 35] subviews];
+        });
     });
 });
 
