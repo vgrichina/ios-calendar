@@ -16,12 +16,30 @@ describe(@"CalendarView", ^{
     __block CXCalendarView *calendarView = nil;
 
     beforeEach(^{
-        calendarView = [[CXCalendarView new] autorelease];
+        calendarView = [[[CXCalendarView alloc] initWithFrame: CGRectMake(0, 0, 320, 480)] autorelease];
     });
 
-    context(@"when foo", ^{
-        it(@"should bar", ^{
+    context(@"when given valid date", ^{
+        beforeEach(^{
+            calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011
+        });
 
+        it(@"should display appropriate month label", ^{
+            [calendarView.monthLabel shouldNotBeNil];
+            [[calendarView.monthLabel.text should] equal:
+             [[[[NSDateFormatter new] autorelease] monthSymbols] objectAtIndex: 06]];
+        });
+
+        it(@"should layout month label appropriately", ^{
+            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
+            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+        });
+
+        it(@"should layout month label appropriately when frame is changed", ^{
+            calendarView.width = 50;
+            calendarView.height = 100;
+            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
+            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
         });
     });
 });
