@@ -9,12 +9,10 @@
 #import <Three20UI/Three20UI+Additions.h>
 #import <Three20Style/Three20Style+Additions.h>
 
-@interface CXCalendarCellView : TTView {
+@interface CXCalendarCellView : TTButton {
     NSDate *_date;
-    TTLabel *_label;
 }
 
 @property(retain) NSDate *date;
-@property(readonly) TTLabel *label;
 
 @end

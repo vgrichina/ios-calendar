@@ -19,6 +19,12 @@ describe(@"CalendarCellView", ^{
         cellView = [[CXCalendarCellView alloc] initWithFrame: CGRectMake(0, 0, 100, 50)];
     });
 
+    context(@"when created", ^{
+        it(@"should be subclass of TTButton", ^{
+            [[cellView should] beKindOfClass: [TTButton class]];
+        });
+    });
+
     context(@"when given valid date", ^{
         beforeEach(^{
             cellView.date = [NSDate date];
@@ -28,21 +34,9 @@ describe(@"CalendarCellView", ^{
             NSCalendar *calendar = [NSCalendar currentCalendar];
             NSDateComponents *components = [calendar components: NSDayCalendarUnit
                                                        fromDate: cellView.date];
-            [cellView.label shouldNotBeNil];
-            [[cellView.label.text should] equal:
+            [[cellView titleForState: UIControlStateNormal] shouldNotBeNil];
+            [[[cellView titleForState: UIControlStateNormal] should] equal:
                 [NSString stringWithFormat: @"%d", components.day]];
-        });
-
-        it(@"should layout day label appropriately", ^{
-            [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
-            [[theValue(cellView.label.height) should] equal: theValue(cellView.height)];
-        });
-
-        it(@"should layout day label appropriately when frame is changed", ^{
-            cellView.width = 50;
-            cellView.height = 100;
-            [[theValue(cellView.label.width) should] equal: theValue(cellView.width)];
-            [[theValue(cellView.label.height) should] equal: theValue(cellView.height)];
         });
     });
 });

@@ -10,17 +10,6 @@
 
 @implementation CXCalendarCellView
 
-- (TTLabel *) label {
-    if (!_label) {
-        _label = [[TTLabel new] autorelease];
-        _label.frame = self.bounds;
-        _label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [self addSubview: _label];
-    }
-
-    return _label;
-}
-
 - (NSDate *) date {
     return _date;
 }
@@ -31,7 +20,7 @@
         _date = [date retain];
         NSCalendar *calendar = [NSCalendar currentCalendar];
         int day = [calendar components: NSDayCalendarUnit fromDate: self.date].day;
-        self.label.text = [NSString stringWithFormat: @"%d", day];
+        [self setTitle: [NSString stringWithFormat: @"%d", day] forState: UIControlStateNormal];
     }
 }
 
