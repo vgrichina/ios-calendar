@@ -9,6 +9,7 @@
 #import "Kiwi.h"
 
 #import "CXCalendarView.h"
+#import "CXCalendarCellView.h"
 
 SPEC_BEGIN(CalendarViewSpec)
 
@@ -48,6 +49,13 @@ describe(@"CalendarView", ^{
 
         it(@"should have enough cells in grid view", ^{
             [[[calendarView.gridView should] have: 35] subviews];
+        });
+
+        it(@"should have cells sized appropriately", ^{
+            for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
+                [[theValue(cell.width) should] equal: calendarView.width / 7.0 withDelta: 1.0];
+                [[theValue(cell.height) should] equal: calendarView.height / 6.0 withDelta: 1.0];
+            }
         });
     });
 });

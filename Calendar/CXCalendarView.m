@@ -64,6 +64,8 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 }
 
 - (void) monthUpdated {
+    CGSize cellSize = CGSizeMake(self.width / 7.0, self.height / 6.0);
+
     [self.gridView removeAllSubviews];
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -80,6 +82,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
+            cellView.size = cellSize;
             [self.gridView addSubview: cellView];
 
             date = [calendar dateByAddingComponents: dayStep toDate: date options: 0];
