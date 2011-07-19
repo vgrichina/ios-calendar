@@ -8,6 +8,8 @@
 
 #import "Kiwi.h"
 
+#import "TestStyleSheet.h"
+
 #import "CXCalendarView.h"
 #import "CXCalendarCellView.h"
 
@@ -55,6 +57,21 @@ describe(@"CalendarView", ^{
             for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
                 [[theValue(cell.width) should] equal: calendarView.width / 7.0 withDelta: 1.0];
                 [[theValue(cell.height) should] equal: calendarView.height / 6.0 withDelta: 1.0];
+            }
+        });
+    });
+
+    context(@"when stylesheet is set", ^{
+        beforeEach(^{
+            [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
+            calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011
+        });
+
+        it(@"should have cells styled appropriately", ^{
+            for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
+                [[cell styleForState: UIControlStateNormal] shouldNotBeNil];
+                [[[cell styleForState: UIControlStateNormal] should] equal:
+                 [TTSTYLESHEET styleWithSelector: @"calendarCellStyle:" forState: UIControlStateNormal]];
             }
         });
     });

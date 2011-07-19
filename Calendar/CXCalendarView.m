@@ -83,6 +83,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
             cellView.size = cellSize;
+            [cellView setStylesWithSelector: @"calendarCellStyle:"];
             [self.gridView addSubview: cellView];
 
             date = [calendar dateByAddingComponents: dayStep toDate: date options: 0];

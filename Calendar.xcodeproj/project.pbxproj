@@ -157,6 +157,7 @@
 		D52AF72513CFA15D001B5F71 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FB13CFA0EA001B5F71 /* NSObject+KiwiStubAdditions.m */; };
 		D52AF72713CFA15D001B5F71 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FD13CFA0EA001B5F71 /* NSObject+KiwiVerifierAdditions.m */; };
 		D52AF72913CFA15D001B5F71 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FF13CFA0EA001B5F71 /* NSValue+KiwiAdditions.m */; };
+		D54D976713D60D1100B2C5C8 /* TestStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */; };
 		D5599F2613CFAFE90098A133 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
 		D5599F2713CFAFE90098A133 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
 		D5599F2813CFAFE90098A133 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
@@ -473,6 +474,8 @@
 		D52AF5FD13CFA0EA001B5F71 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+KiwiVerifierAdditions.m"; path = "Kiwi/Kiwi/NSObject+KiwiVerifierAdditions.m"; sourceTree = SOURCE_ROOT; };
 		D52AF5FE13CFA0EA001B5F71 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+KiwiAdditions.h"; path = "Kiwi/Kiwi/NSValue+KiwiAdditions.h"; sourceTree = SOURCE_ROOT; };
 		D52AF5FF13CFA0EA001B5F71 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+KiwiAdditions.m"; path = "Kiwi/Kiwi/NSValue+KiwiAdditions.m"; sourceTree = SOURCE_ROOT; };
+		D54D976513D60D1100B2C5C8 /* TestStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStyleSheet.h; sourceTree = "<group>"; };
+		D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStyleSheet.m; sourceTree = "<group>"; };
 		D5B46D1013CE22CD0079A9C2 /* libCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B46D1313CE22CD0079A9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5B46D1713CE22CD0079A9C2 /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
@@ -641,6 +644,8 @@
 				D5B46D2913CE22CD0079A9C2 /* Supporting Files */,
 				D5D427B613CE281D00A90CCC /* CalendarViewSpec.m */,
 				D5D427BA13CE283A00A90CCC /* CalendarViewCellSpec.m */,
+				D54D976513D60D1100B2C5C8 /* TestStyleSheet.h */,
+				D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */,
 			);
 			path = CalendarTests;
 			sourceTree = "<group>";
@@ -1198,6 +1203,7 @@
 				D52AF72913CFA15D001B5F71 /* NSValue+KiwiAdditions.m in Sources */,
 				D5D427BD13CE29AC00A90CCC /* CalendarViewSpec.m in Sources */,
 				D5D427BE13CE29AC00A90CCC /* CalendarViewCellSpec.m in Sources */,
+				D54D976713D60D1100B2C5C8 /* TestStyleSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
