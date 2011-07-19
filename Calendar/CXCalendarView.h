@@ -9,6 +9,8 @@
 #import <Three20UI/Three20UI+Additions.h>
 #import <Three20Style/Three20Style+Additions.h>
 
+#import "CXCalendarCellView.h"
+
 @interface CXCalendarView : TTView {
     NSDate *_selectedDate;
 
@@ -19,5 +21,7 @@
 @property(retain) NSDate *selectedDate;
 @property(readonly) TTLabel *monthLabel;
 @property(readonly) TTView *gridView;
+
+- (CXCalendarCellView *) cellForDate: (NSDate *) date;
 
 @end

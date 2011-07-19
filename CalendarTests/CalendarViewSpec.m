@@ -47,10 +47,17 @@ describe(@"CalendarView", ^{
 
         it(@"should have a grid view", ^{
             [calendarView.gridView shouldNotBeNil];
+            [[calendarView.gridView.superview should] equal: calendarView];
         });
 
         it(@"should have enough cells in grid view", ^{
             [[[calendarView.gridView should] have: 35] subviews];
+        });
+
+        it(@"should have correct day numbers", ^{
+            [[[[calendarView.gridView.subviews objectAtIndex: 0] titleForState: UIControlStateNormal] should] equal: @"27"];
+            [[[[calendarView.gridView.subviews objectAtIndex: 4] titleForState: UIControlStateNormal] should] equal: @"1"];
+            [[[[calendarView.gridView.subviews objectAtIndex: 34] titleForState: UIControlStateNormal] should] equal: @"31"];
         });
 
         it(@"should have cells sized appropriately", ^{
@@ -58,6 +65,10 @@ describe(@"CalendarView", ^{
                 [[theValue(cell.width) should] equal: calendarView.width / 7.0 withDelta: 1.0];
                 [[theValue(cell.height) should] equal: calendarView.height / 6.0 withDelta: 1.0];
             }
+        });
+
+        it(@"should have selected appropriate cell view", ^{
+            [[theValue([[calendarView.gridView.subviews objectAtIndex: 17] state]) should] equal: theValue(UIControlStateSelected)];
         });
     });
 

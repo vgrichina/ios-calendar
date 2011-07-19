@@ -10,6 +10,12 @@
 
 #import "CXCalendarCellView.h"
 
+@interface CXCalendarView(private)
+
+- (void) monthUpdated;
+
+@end
+
 @implementation CXCalendarView
 
 static const CGFloat kDefaultMonthLabelHeight = 48;
@@ -39,6 +45,8 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
             [self monthUpdated];
         }
 
+        [self cellForDate: selectedDate].selected = YES;
+
         self.monthLabel.text = [[[[NSDateFormatter new] autorelease] monthSymbols] objectAtIndex: newMonth - 1];
     }
 }
@@ -58,9 +66,42 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 - (TTView *) gridView {
     if (!_gridView) {
         _gridView = [TTView new];
+        [self addSubview: _gridView];
     }
 
     return _gridView;
+}
+
+- (NSDate *) monthCalendarStartDate: (NSDate *) date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    NSDate *monthStartDate;
+    if (![calendar rangeOfUnit: NSMonthCalendarUnit startDate: &monthStartDate interval: NULL forDate: date]) {
+        return nil;
+    }
+
+    NSDate *weekStartDate;
+    if (![calendar rangeOfUnit: NSWeekCalendarUnit startDate: &weekStartDate interval: NULL forDate: monthStartDate]) {
+        return nil;
+    }
+
+    NSDateComponents *firstDayComponents = [[NSDateComponents new] autorelease];
+    firstDayComponents.day = [calendar firstWeekday];
+
+    return [calendar dateByAddingComponents: firstDayComponents toDate: weekStartDate options: 0];
+}
+
+- (CXCalendarCellView *) cellForDate: (NSDate *) date {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+
+    NSDate *startDate = [self monthCalendarStartDate: self.selectedDate];
+    int dayInCalendar = [calendar components: NSDayCalendarUnit fromDate: startDate toDate: date options: 0].day;
+
+    if (dayInCalendar > 0 && dayInCalendar < [self.gridView.subviews count]) {
+        return [self.gridView.subviews objectAtIndex: dayInCalendar];
+    }
+
+    return nil;
 }
 
 - (void) monthUpdated {
@@ -71,10 +112,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     NSCalendar *calendar = [NSCalendar currentCalendar];
     int selectedMonth = [calendar components: NSMonthCalendarUnit fromDate: self.selectedDate].month;
 
-    NSDateComponents *components = [calendar components: NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit
-                                               fromDate: self.selectedDate];
-    components.week -= 1;
-    NSDate *date = [calendar dateFromComponents: components];
+    NSDate *date = [self monthCalendarStartDate: self.selectedDate];
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
     int month = selectedMonth;
