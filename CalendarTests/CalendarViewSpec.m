@@ -67,6 +67,17 @@ describe(@"CalendarView", ^{
             }
         });
 
+
+        it(@"should have cells placed appropriately", ^{
+            int i = 0;
+            for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
+                [[theValue(cell.left) should] equal: (calendarView.width / 7.0) * (i % 7) withDelta: 1.0];
+                [[theValue(cell.top) should] equal: calendarView.height / 6.0 * (i / 7) withDelta: 1.0];
+
+                i++;
+            }
+        });
+
         it(@"should have selected appropriate cell view", ^{
             [[theValue([[calendarView.gridView.subviews objectAtIndex: 17] state]) should] equal: theValue(UIControlStateSelected)];
         });

@@ -116,11 +116,14 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
     int month = selectedMonth;
+    int j = 0;
     while (month <= selectedMonth) {
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
             cellView.size = cellSize;
+            cellView.left = cellSize.width * i;
+            cellView.top = cellSize.height * j;
             [cellView setStylesWithSelector: @"calendarCellStyle:"];
             [self.gridView addSubview: cellView];
 
@@ -128,7 +131,8 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
         }
 
         month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
-        NSLog(@"date: %@ month: %d", date, month);
+
+        j++;
     }
 }
 
