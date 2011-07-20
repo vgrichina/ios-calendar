@@ -47,7 +47,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 
         [self cellForDate: selectedDate].selected = YES;
 
-        self.monthLabel.text = [[[[NSDateFormatter new] autorelease] monthSymbols] objectAtIndex: newMonth - 1];
+        self.monthLabel.text = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: newMonth - 1];
     }
 }
 
