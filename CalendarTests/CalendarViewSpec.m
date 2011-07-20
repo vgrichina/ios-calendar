@@ -25,6 +25,8 @@ describe(@"CalendarView", ^{
     context(@"when given valid date", ^{
         beforeEach(^{
             calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011
+
+            [calendarView layoutSubviews];
         });
 
         it(@"should display appropriate month label", ^{
@@ -51,35 +53,34 @@ describe(@"CalendarView", ^{
         });
 
         it(@"should have enough cells in grid view", ^{
-            [[[calendarView.gridView should] have: 35] subviews];
+            [[[calendarView.gridView should] have: 42] subviews];
         });
 
         it(@"should have correct day numbers", ^{
-            [[[[calendarView.gridView.subviews objectAtIndex: 0] titleForState: UIControlStateNormal] should] equal: @"27"];
-            [[[[calendarView.gridView.subviews objectAtIndex: 4] titleForState: UIControlStateNormal] should] equal: @"1"];
-            [[[[calendarView.gridView.subviews objectAtIndex: 34] titleForState: UIControlStateNormal] should] equal: @"31"];
+            [[[[calendarView.gridView.subviews objectAtIndex: 0] titleForState: UIControlStateNormal] should] equal: @"26"];
+            [[[[calendarView.gridView.subviews objectAtIndex: 4] titleForState: UIControlStateNormal] should] equal: @"30"];
+            [[[[calendarView.gridView.subviews objectAtIndex: 34] titleForState: UIControlStateNormal] should] equal: @"30"];
         });
 
         it(@"should have cells sized appropriately", ^{
             for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
-                [[theValue(cell.width) should] equal: calendarView.width / 7.0 withDelta: 1.0];
-                [[theValue(cell.height) should] equal: calendarView.height / 6.0 withDelta: 1.0];
+                [[theValue(cell.width) should] equal: calendarView.gridView.width / 7.0 withDelta: 1.0];
+                [[theValue(cell.height) should] equal: calendarView.gridView.height / 6.0 withDelta: 1.0];
             }
         });
-
 
         it(@"should have cells placed appropriately", ^{
             int i = 0;
             for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
-                [[theValue(cell.left) should] equal: (calendarView.width / 7.0) * (i % 7) withDelta: 1.0];
-                [[theValue(cell.top) should] equal: calendarView.height / 6.0 * (i / 7) withDelta: 1.0];
+                [[theValue(cell.left) should] equal: calendarView.gridView.width / 7.0 * (i % 7) withDelta: 1.0];
+                [[theValue(cell.top) should] equal: calendarView.gridView.height / 6.0 * (i / 7) withDelta: 1.0];
 
                 i++;
             }
         });
 
         it(@"should have selected appropriate cell view", ^{
-            [[theValue([[calendarView.gridView.subviews objectAtIndex: 17] state]) should] equal: theValue(UIControlStateSelected)];
+            [[theValue([[calendarView.gridView.subviews objectAtIndex: 18] state]) should] equal: theValue(UIControlStateSelected)];
         });
     });
 

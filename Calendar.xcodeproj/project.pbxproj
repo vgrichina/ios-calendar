@@ -166,8 +166,15 @@
 		D54D978113D643A900B2C5C8 /* CalendarDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D978013D643A900B2C5C8 /* CalendarDemoAppDelegate.m */; };
 		D54D978313D643A900B2C5C8 /* CalendarDemoViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = D54D978213D643A900B2C5C8 /* CalendarDemoViewController.h */; };
 		D54D978513D643A900B2C5C8 /* CalendarDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */; };
-		D54D978813D643A900B2C5C8 /* CalendarDemoViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54D978613D643A900B2C5C8 /* CalendarDemoViewController_iPhone.xib */; };
-		D54D978B13D643A900B2C5C8 /* CalendarDemoViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D54D978913D643A900B2C5C8 /* CalendarDemoViewController_iPad.xib */; };
+		D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1013CE22CD0079A9C2 /* libCalendar.a */; };
+		D54D979013D6492400B2C5C8 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
+		D54D979113D6492400B2C5C8 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
+		D54D979213D6492400B2C5C8 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
+		D54D979313D6492400B2C5C8 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		D54D979413D6492400B2C5C8 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
+		D54D979513D6492400B2C5C8 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A737074758E53BA54BE94 /* libThree20UINavigator.a */; };
+		D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		D54D979713D64C1C00B2C5C8 /* TestStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */; };
 		D5599F2613CFAFE90098A133 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
 		D5599F2713CFAFE90098A133 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
 		D5599F2813CFAFE90098A133 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
@@ -487,16 +494,14 @@
 		D54D976513D60D1100B2C5C8 /* TestStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStyleSheet.h; sourceTree = "<group>"; };
 		D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStyleSheet.m; sourceTree = "<group>"; };
 		D54D977113D643A800B2C5C8 /* CalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D54D977813D643A800B2C5C8 /* CalendarDemo-Info.plist */ = {isa = PBXFileReference; path = "CalendarDemo-Info.plist"; sourceTree = "<group>"; };
+		D54D977813D643A800B2C5C8 /* CalendarDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalendarDemo-Info.plist"; sourceTree = "<group>"; };
 		D54D977A13D643A800B2C5C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D54D977C13D643A800B2C5C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D54D977E13D643A800B2C5C8 /* CalendarDemo-Prefix.pch */ = {isa = PBXFileReference; path = "CalendarDemo-Prefix.pch"; sourceTree = "<group>"; };
-		D54D977F13D643A900B2C5C8 /* CalendarDemoAppDelegate.h */ = {isa = PBXFileReference; path = CalendarDemoAppDelegate.h; sourceTree = "<group>"; };
+		D54D977E13D643A800B2C5C8 /* CalendarDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CalendarDemo-Prefix.pch"; sourceTree = "<group>"; };
+		D54D977F13D643A900B2C5C8 /* CalendarDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDemoAppDelegate.h; sourceTree = "<group>"; };
 		D54D978013D643A900B2C5C8 /* CalendarDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDemoAppDelegate.m; sourceTree = "<group>"; };
 		D54D978213D643A900B2C5C8 /* CalendarDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDemoViewController.h; sourceTree = "<group>"; };
 		D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDemoViewController.m; sourceTree = "<group>"; };
-		D54D978713D643A900B2C5C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CalendarDemoViewController_iPhone.xib; sourceTree = "<group>"; };
-		D54D978A13D643A900B2C5C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CalendarDemoViewController_iPad.xib; sourceTree = "<group>"; };
 		D5B46D1013CE22CD0079A9C2 /* libCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B46D1313CE22CD0079A9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5B46D1713CE22CD0079A9C2 /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
@@ -519,6 +524,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */,
+				D54D979013D6492400B2C5C8 /* libThree20Core.a in Frameworks */,
+				D54D979113D6492400B2C5C8 /* libThree20Network.a in Frameworks */,
+				D54D979213D6492400B2C5C8 /* libThree20Style.a in Frameworks */,
+				D54D979313D6492400B2C5C8 /* libThree20UI.a in Frameworks */,
+				D54D979413D6492400B2C5C8 /* libThree20UICommon.a in Frameworks */,
+				D54D979513D6492400B2C5C8 /* libThree20UINavigator.a in Frameworks */,
+				D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */,
 				D54D977313D643A800B2C5C8 /* UIKit.framework in Frameworks */,
 				D54D977413D643A800B2C5C8 /* Foundation.framework in Frameworks */,
 				D54D977513D643A800B2C5C8 /* CoreGraphics.framework in Frameworks */,
@@ -617,8 +630,6 @@
 				D54D978013D643A900B2C5C8 /* CalendarDemoAppDelegate.m */,
 				D54D978213D643A900B2C5C8 /* CalendarDemoViewController.h */,
 				D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */,
-				D54D978613D643A900B2C5C8 /* CalendarDemoViewController_iPhone.xib */,
-				D54D978913D643A900B2C5C8 /* CalendarDemoViewController_iPad.xib */,
 				D54D977713D643A800B2C5C8 /* Supporting Files */,
 			);
 			path = CalendarDemo;
@@ -1176,8 +1187,6 @@
 			files = (
 				D54D977B13D643A800B2C5C8 /* InfoPlist.strings in Resources */,
 				D54D978313D643A900B2C5C8 /* CalendarDemoViewController.h in Resources */,
-				D54D978813D643A900B2C5C8 /* CalendarDemoViewController_iPhone.xib in Resources */,
-				D54D978B13D643A900B2C5C8 /* CalendarDemoViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,6 +1224,7 @@
 				D54D977D13D643A800B2C5C8 /* main.m in Sources */,
 				D54D978113D643A900B2C5C8 /* CalendarDemoAppDelegate.m in Sources */,
 				D54D978513D643A900B2C5C8 /* CalendarDemoViewController.m in Sources */,
+				D54D979713D64C1C00B2C5C8 /* TestStyleSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1353,22 +1363,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D54D978613D643A900B2C5C8 /* CalendarDemoViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D54D978713D643A900B2C5C8 /* en */,
-			);
-			name = CalendarDemoViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		D54D978913D643A900B2C5C8 /* CalendarDemoViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D54D978A13D643A900B2C5C8 /* en */,
-			);
-			name = CalendarDemoViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
 		D5B46D2B13CE22CD0079A9C2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1383,7 +1377,7 @@
 		D54D978D13D643A900B2C5C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1392,7 +1386,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CalendarDemo/CalendarDemo-Prefix.pch";
 				INFOPLIST_FILE = "CalendarDemo/CalendarDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1402,7 +1396,7 @@
 		D54D978E13D643A900B2C5C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1411,7 +1405,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CalendarDemo/CalendarDemo-Prefix.pch";
 				INFOPLIST_FILE = "CalendarDemo/CalendarDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1535,6 +1529,7 @@
 				D54D978E13D643A900B2C5C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D5B46D0A13CE22CD0079A9C2 /* Build configuration list for PBXProject "Calendar" */ = {
 			isa = XCConfigurationList;

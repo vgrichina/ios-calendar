@@ -67,6 +67,10 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     if (!_gridView) {
         _gridView = [TTView new];
         [self addSubview: _gridView];
+        _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
+        _gridView.frame = self.bounds;
+        _gridView.height -= self.monthLabel.height;
+        _gridView.top = self.monthLabel.bottom;
     }
 
     return _gridView;
@@ -85,10 +89,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
         return nil;
     }
 
-    NSDateComponents *firstDayComponents = [[NSDateComponents new] autorelease];
-    firstDayComponents.day = [calendar firstWeekday];
-
-    return [calendar dateByAddingComponents: firstDayComponents toDate: weekStartDate options: 0];
+    return weekStartDate;
 }
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date {
@@ -105,8 +106,6 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 }
 
 - (void) monthUpdated {
-    CGSize cellSize = CGSizeMake(self.width / 7.0, self.height / 6.0);
-
     [self.gridView removeAllSubviews];
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -116,14 +115,10 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
     int month = selectedMonth;
-    int j = 0;
     while (month <= selectedMonth) {
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
-            cellView.size = cellSize;
-            cellView.left = cellSize.width * i;
-            cellView.top = cellSize.height * j;
             [cellView setStylesWithSelector: @"calendarCellStyle:"];
             [self.gridView addSubview: cellView];
 
@@ -132,7 +127,23 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 
         month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
 
-        j++;
+    }
+
+    [self setNeedsLayout];
+}
+
+- (void) layoutSubviews {
+    [super layoutSubviews];
+
+    CGSize cellSize = CGSizeMake(self.gridView.width / 7.0, self.gridView.height / 6.0);
+
+    int i = 0;
+    for (CXCalendarCellView *cellView in self.gridView.subviews) {
+        cellView.size = cellSize;
+        cellView.left = cellSize.width * (i % 7);
+        cellView.top = cellSize.height * (i / 7);
+
+        i++;
     }
 }
 
