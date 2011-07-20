@@ -61,6 +61,7 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
         _monthLabel.height = kDefaultMonthLabelHeight;
         _monthLabel.width = self.width;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        _monthLabel.style = TTSTYLE(calendarMonthLabelStyle);
     }
 
     return _monthLabel;
@@ -70,10 +71,11 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     if (!_gridView) {
         _gridView = [TTView new];
         [self addSubview: _gridView];
-        _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
         _gridView.frame = self.bounds;
         _gridView.height -= self.monthLabel.height;
         _gridView.top = self.monthLabel.bottom;
+        _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
+        _gridView.style = TTSTYLE(calendarGridViewStyle);
     }
 
     return _gridView;
@@ -117,19 +119,20 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     NSDate *date = [self monthCalendarStartDate: self.selectedDate];
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
-    int month = selectedMonth;
+    int month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
     while (month <= selectedMonth) {
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
             [cellView setStylesWithSelector: @"calendarCellStyle:"];
+            if (month != selectedMonth) {
+                cellView.enabled = NO;
+            }
             [self.gridView addSubview: cellView];
 
             date = [calendar dateByAddingComponents: dayStep toDate: date options: 0];
+            month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
         }
-
-        month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
-
     }
 
     [self setNeedsLayout];

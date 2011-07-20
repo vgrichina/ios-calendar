@@ -21,9 +21,6 @@
     self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.calendarView.selectedDate = [NSDate date];
-
-    self.calendarView.backgroundColor = [UIColor purpleColor];
-    self.calendarView.monthLabel.style = [TTTextStyle styleWithColor: [UIColor whiteColor] next: nil];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
