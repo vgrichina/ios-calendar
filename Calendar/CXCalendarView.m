@@ -38,6 +38,8 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
         int oldMonth = [calendar components: NSMonthCalendarUnit fromDate: self.selectedDate].month;
         int newMonth = [calendar components: NSMonthCalendarUnit fromDate: selectedDate].month;
 
+        int year = [calendar components: NSYearCalendarUnit fromDate: selectedDate].year;
+
         [_selectedDate release];
         _selectedDate = [selectedDate retain];
 
@@ -47,7 +49,8 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
 
         [self cellForDate: selectedDate].selected = YES;
 
-        self.monthLabel.text = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: newMonth - 1];
+        self.monthLabel.text = [NSString stringWithFormat: @"%@ %d",
+                                [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: newMonth - 1], year];
     }
 }
 

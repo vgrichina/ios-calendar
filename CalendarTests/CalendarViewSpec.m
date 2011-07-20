@@ -31,8 +31,9 @@ describe(@"CalendarView", ^{
 
         it(@"should display appropriate month label", ^{
             [calendarView.monthLabel shouldNotBeNil];
-            [[calendarView.monthLabel.text should] equal:
-             [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: 06]];
+            NSString *expectedLabel = [NSString stringWithFormat: @"%@ 2011",
+                                       [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: 06]];
+            [[calendarView.monthLabel.text should] equal: expectedLabel];
         });
 
         it(@"should layout month label appropriately", ^{
