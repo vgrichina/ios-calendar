@@ -18,6 +18,8 @@
 
 @implementation CXCalendarView
 
+@synthesize delegate;
+
 static const CGFloat kDefaultMonthLabelHeight = 48;
 
 - (void) dealloc {
@@ -47,6 +49,9 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
             [self monthUpdated];
         }
 
+        for (CXCalendarCellView *cellView in self.gridView.subviews) {
+            cellView.selected = NO;
+        }
         [self cellForDate: selectedDate].selected = YES;
 
         self.monthLabel.text = [NSString stringWithFormat: @"%@ %d",
@@ -110,6 +115,11 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     return nil;
 }
 
+- (void) touchedCellView: (CXCalendarCellView *) cellView {
+    self.selectedDate = cellView.date;
+    [self.delegate calendarView: self didSelectDate: self.selectedDate];
+}
+
 - (void) monthUpdated {
     [self.gridView removeAllSubviews];
 
@@ -128,6 +138,9 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
             if (month != selectedMonth) {
                 cellView.enabled = NO;
             }
+            [cellView addTarget: self
+                         action: @selector(touchedCellView:)
+               forControlEvents: UIControlEventTouchUpInside];
             [self.gridView addSubview: cellView];
 
             date = [calendar dateByAddingComponents: dayStep toDate: date options: 0];

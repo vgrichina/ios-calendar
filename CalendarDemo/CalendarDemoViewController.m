@@ -8,6 +8,8 @@
 
 #import "CalendarDemoViewController.h"
 
+#import <Three20UICommon/Three20UICommon+Additions.h>
+
 @implementation CalendarDemoViewController
 
 @synthesize calendarView;
@@ -21,10 +23,21 @@
     self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.calendarView.selectedDate = [NSDate date];
+
+    self.calendarView.delegate = self;
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
     return YES;
+}
+
+#pragma mark CXCalendarViewDelegate
+
+- (void) calendarView: (CXCalendarView *) calendarView
+        didSelectDate: (NSDate *) date {
+
+    NSLog(@"Selected date: %@", date);
+    TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);
 }
 
 @end

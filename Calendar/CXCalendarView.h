@@ -11,6 +11,8 @@
 
 #import "CXCalendarCellView.h"
 
+@protocol CXCalendarViewDelegate;
+
 @interface CXCalendarView : TTView {
     NSDate *_selectedDate;
 
@@ -22,6 +24,14 @@
 @property(readonly) TTLabel *monthLabel;
 @property(readonly) TTView *gridView;
 
+@property(assign) id<CXCalendarViewDelegate> delegate;
+
 - (CXCalendarCellView *) cellForDate: (NSDate *) date;
+
+@end
+
+@protocol CXCalendarViewDelegate <NSObject>
+
+- (void) calendarView: (CXCalendarView *) calendarView didSelectDate: (NSDate *) date;
 
 @end

@@ -10,7 +10,7 @@
 
 #import "CXCalendarView.h"
 
-@interface CalendarDemoViewController : UIViewController
+@interface CalendarDemoViewController : UIViewController<CXCalendarViewDelegate>
 
 @property(assign) CXCalendarView *calendarView;
 
