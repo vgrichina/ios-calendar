@@ -1,0 +1,9 @@
+h2. Introduction
+
+ios-calendar is a stylable month calendar view for use in iPhone applications. It uses "Three20 framework":http://three20.info heavily, especially for styling.
+While there are existing implementations ("Kal":https://github.com/klazuka/Kal and @TKCalendarMonthView@ from "Tapku Library":https://github.com/devinross/tapkulibrary, they are quite limited. In particular they both replicate styling and functionality of iPhone Calendar app and there is basically no easy way to adjust them. In addition to this – only portrait view is supported in them.
+
+ios-calenar was developed to solve aforementioned problems. It's default design is heavily inspired by "MoMa iPhone app".
+
+
+h2. TODO
