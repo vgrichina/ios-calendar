@@ -20,7 +20,7 @@
 
 @synthesize delegate;
 
-static const CGFloat kDefaultMonthLabelHeight = 48;
+static const CGFloat kDefaultMonthBarHeight = 48;
 
 - (void) dealloc {
     [_selectedDate release];
@@ -59,11 +59,24 @@ static const CGFloat kDefaultMonthLabelHeight = 48;
     }
 }
 
+- (TTView *) monthBar {
+    if (!_monthBar) {
+        _monthBar = [TTView new];
+        [self addSubview: _monthBar];
+        _monthBar.height = kDefaultMonthBarHeight;
+        _monthBar.width = self.width;
+        _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        _monthBar.style = TTSTYLE(calendarMonthBarStyle);
+    }
+
+    return _monthBar;
+}
+
 - (TTLabel *) monthLabel {
     if (!_monthLabel) {
         _monthLabel = [TTLabel new];
-        [self addSubview: _monthLabel];
-        _monthLabel.height = kDefaultMonthLabelHeight;
+        [self.monthBar addSubview: _monthLabel];
+        _monthLabel.height = self.monthBar.height;
         _monthLabel.width = self.width;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.style = TTSTYLE(calendarMonthLabelStyle);

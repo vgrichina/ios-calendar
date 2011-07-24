@@ -23,7 +23,7 @@
     return [TTTextStyle styleWithColor: [UIColor grayColor] next: nil];
 }
 
-- (TTStyle *) calendarMonthLabelStyle {
+- (TTStyle *) calendarMonthBarStyle {
     return
     [TTLinearGradientFillStyle styleWithColor1: RGBCOLOR(188, 200, 215)
                                         color2: RGBCOLOR(125, 150, 179) next:
@@ -31,11 +31,15 @@
                                right: nil
                               bottom: RGBCOLOR(57, 70, 84)
                                 left: nil
-                               width: 1 next:
-       [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
-                            color: [UIColor whiteColor]
-                      shadowColor: [UIColor grayColor]
-                     shadowOffset: CGSizeMake(0, 1) next: nil]]];
+                               width: 1 next: nil]];
+}
+
+- (TTStyle *) calendarMonthLabelStyle {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
 }
 
 - (TTStyle *) calendarGridViewStyle {

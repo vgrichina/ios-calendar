@@ -16,11 +16,14 @@
 @interface CXCalendarView : TTView {
     NSDate *_selectedDate;
 
+    TTView *_monthBar;
     TTLabel *_monthLabel;
     TTView *_gridView;
 }
 
 @property(retain) NSDate *selectedDate;
+
+@property(readonly) TTView *monthBar;
 @property(readonly) TTLabel *monthLabel;
 @property(readonly) TTView *gridView;
 

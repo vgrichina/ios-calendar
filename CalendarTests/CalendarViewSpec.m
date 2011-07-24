@@ -29,8 +29,28 @@ describe(@"CalendarView", ^{
             [calendarView layoutSubviews];
         });
 
+        it(@"should have month bar", ^{
+            [calendarView.monthBar shouldNotBeNil];
+            [calendarView.monthBar.style shouldNotBeNil];
+            [[calendarView.monthBar.style should] equal: TTSTYLE(calendarMonthBarStyle)];
+            [[calendarView.monthBar.superview should] equal: calendarView];
+        });
+
+        it(@"should layout month bar appropriately", ^{
+            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
+            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+        });
+
+        it(@"should layout month bar appropriately when frame is changed", ^{
+            calendarView.width = 50;
+            calendarView.height = 100;
+            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
+            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+        });
+
         it(@"should display appropriate month label", ^{
             [calendarView.monthLabel shouldNotBeNil];
+            [[calendarView.monthLabel.superview should] equal: calendarView.monthBar];
             NSString *expectedLabel = [NSString stringWithFormat: @"%@ 2011",
                                        [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: 06]];
             [[calendarView.monthLabel.text should] equal: expectedLabel];
