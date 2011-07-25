@@ -32,6 +32,23 @@
                               bottom: RGBCOLOR(57, 70, 84)
                                 left: nil
                                width: 1 next: nil]];
+
+}
+
+- (TTStyle *) calendarMonthBackButton: (UIControlState) state {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
+}
+
+- (TTStyle *) calendarMonthForwardButton: (UIControlState) state {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
 }
 
 - (TTStyle *) calendarMonthLabelStyle {

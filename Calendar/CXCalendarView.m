@@ -21,6 +21,15 @@
 @synthesize delegate;
 
 static const CGFloat kDefaultMonthBarHeight = 48;
+static const CGFloat kDefaultMonthBarButtonWidth = 60;
+
+- (id) initWithFrame: (CGRect) frame {
+    if ((self = [super initWithFrame: frame])) {
+        self.selectedDate = [NSDate date];
+    }
+
+    return self;
+}
 
 - (void) dealloc {
     [_selectedDate release];
@@ -66,7 +75,6 @@ static const CGFloat kDefaultMonthBarHeight = 48;
         _monthBar.height = kDefaultMonthBarHeight;
         _monthBar.width = self.width;
         _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        _monthBar.style = TTSTYLE(calendarMonthBarStyle);
     }
 
     return _monthBar;
@@ -79,10 +87,35 @@ static const CGFloat kDefaultMonthBarHeight = 48;
         _monthLabel.height = self.monthBar.height;
         _monthLabel.width = self.width;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        _monthLabel.style = TTSTYLE(calendarMonthLabelStyle);
+        _monthLabel.backgroundColor = [UIColor clearColor];
     }
 
     return _monthLabel;
+}
+
+- (TTButton *) monthBackButton {
+    if (!_monthBackButton) {
+        _monthBackButton = [TTButton buttonWithStyle: @"calendarMonthBackButton:" title: @"<"];
+        [self.monthBar addSubview: _monthBackButton];
+        _monthBackButton.height = self.monthBar.height;
+        _monthBackButton.width = kDefaultMonthBarButtonWidth;
+        [_monthBackButton addTarget: self action: @selector(monthBack) forControlEvents: UIControlEventTouchUpInside];
+    }
+
+    return _monthBackButton;
+}
+
+- (TTButton *) monthForwardButton {
+    if (!_monthForwardButton) {
+        _monthForwardButton = [TTButton buttonWithStyle: @"calendarMonthForwardButton:" title: @">"];
+        [self.monthBar addSubview: _monthForwardButton];
+        _monthForwardButton.height = self.monthBar.height;
+        _monthForwardButton.width = kDefaultMonthBarButtonWidth;
+        _monthForwardButton.right = self.monthBar.width;
+        [_monthForwardButton addTarget: self action: @selector(monthForward) forControlEvents: UIControlEventTouchUpInside];
+    }
+
+    return _monthForwardButton;
 }
 
 - (TTView *) gridView {
@@ -92,8 +125,7 @@ static const CGFloat kDefaultMonthBarHeight = 48;
         _gridView.frame = self.bounds;
         _gridView.height -= self.monthLabel.height;
         _gridView.top = self.monthLabel.bottom;
-        _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
-        _gridView.style = TTSTYLE(calendarGridViewStyle);
+        _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     }
 
     return _gridView;
@@ -133,6 +165,20 @@ static const CGFloat kDefaultMonthBarHeight = 48;
     [self.delegate calendarView: self didSelectDate: self.selectedDate];
 }
 
+- (void) monthForward {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthStep = [[NSDateComponents new] autorelease];
+    monthStep.month = 1;
+    self.selectedDate = [calendar dateByAddingComponents: monthStep toDate: self.selectedDate options: 0];
+}
+
+- (void) monthBack {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *monthStep = [[NSDateComponents new] autorelease];
+    monthStep.month = -1;
+    self.selectedDate = [calendar dateByAddingComponents: monthStep toDate: self.selectedDate options: 0];
+}
+
 - (void) monthUpdated {
     [self.gridView removeAllSubviews];
 
@@ -147,7 +193,6 @@ static const CGFloat kDefaultMonthBarHeight = 48;
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
             cellView.date = date;
-            [cellView setStylesWithSelector: @"calendarCellStyle:"];
             if (month != selectedMonth) {
                 cellView.enabled = NO;
             }
@@ -165,12 +210,19 @@ static const CGFloat kDefaultMonthBarHeight = 48;
 }
 
 - (void) layoutSubviews {
+    self.monthBar.style = TTSTYLE(calendarMonthBarStyle);
+    self.monthLabel.style = TTSTYLE(calendarMonthLabelStyle);
+    [self.monthBackButton setStylesWithSelector: @"calendarMonthBackButton:"];
+    [self.monthForwardButton setStylesWithSelector: @"calendarMonthForwardButton:"];
+    self.gridView.style = TTSTYLE(calendarGridViewStyle);
+
     [super layoutSubviews];
 
     CGSize cellSize = CGSizeMake(self.gridView.width / 7.0, self.gridView.height / 6.0);
 
     int i = 0;
     for (CXCalendarCellView *cellView in self.gridView.subviews) {
+        [cellView setStylesWithSelector: @"calendarCellStyle:"];
         cellView.size = cellSize;
         cellView.left = cellSize.width * (i % 7);
         cellView.top = cellSize.height * (i / 7);

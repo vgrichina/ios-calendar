@@ -10,6 +10,12 @@
 
 @implementation CXCalendarCellView
 
+- (void) dealloc {
+    [_date release];
+
+    [super dealloc];
+}
+
 - (NSDate *) date {
     return _date;
 }

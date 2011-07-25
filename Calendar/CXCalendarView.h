@@ -18,6 +18,8 @@
 
     TTView *_monthBar;
     TTLabel *_monthLabel;
+    TTButton *_monthBackButton;
+    TTButton *_monthForwardButton;
     TTView *_gridView;
 }
 
@@ -25,11 +27,16 @@
 
 @property(readonly) TTView *monthBar;
 @property(readonly) TTLabel *monthLabel;
+@property(readonly) TTButton *monthBackButton;
+@property(readonly) TTButton *monthForwardButton;
 @property(readonly) TTView *gridView;
 
 @property(assign) id<CXCalendarViewDelegate> delegate;
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date;
+
+- (void) monthForward;
+- (void) monthBack;
 
 @end
 

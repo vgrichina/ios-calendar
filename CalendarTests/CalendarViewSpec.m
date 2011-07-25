@@ -22,6 +22,11 @@ describe(@"CalendarView", ^{
         calendarView = [[[CXCalendarView alloc] initWithFrame: CGRectMake(0, 0, 320, 480)] autorelease];
     });
 
+    it(@"should be initialized with current date", ^{
+        [[theValue([calendarView.selectedDate timeIntervalSince1970]) should] equal:
+         [[NSDate date] timeIntervalSince1970] withDelta: 1.0];
+    });
+
     context(@"when given valid date", ^{
         beforeEach(^{
             calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011
@@ -31,8 +36,6 @@ describe(@"CalendarView", ^{
 
         it(@"should have month bar", ^{
             [calendarView.monthBar shouldNotBeNil];
-            [calendarView.monthBar.style shouldNotBeNil];
-            [[calendarView.monthBar.style should] equal: TTSTYLE(calendarMonthBarStyle)];
             [[calendarView.monthBar.superview should] equal: calendarView];
         });
 
@@ -66,6 +69,25 @@ describe(@"CalendarView", ^{
             calendarView.height = 100;
             [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
             [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+        });
+
+        it(@"should display month navigation buttons", ^{
+            [calendarView.monthBackButton shouldNotBeNil];
+            [[calendarView.monthBackButton.superview should] equal: calendarView.monthBar];
+            [calendarView.monthForwardButton shouldNotBeNil];
+            [[calendarView.monthForwardButton.superview should] equal: calendarView.monthBar];
+        });
+
+        it(@"should layout navigation buttons appropriately", ^{
+            [[theValue(calendarView.monthBackButton.left) should] beZero];
+            [[theValue(calendarView.monthBackButton.top) should] beZero];
+            [[theValue(calendarView.monthBackButton.height) should] equal: theValue(calendarView.monthBar.height)];
+            [[theValue(calendarView.monthBackButton.width) should] equal: theValue(60)];
+
+            [[theValue(calendarView.monthForwardButton.left) should] equal: theValue(calendarView.monthBar.width - 60)];
+            [[theValue(calendarView.monthForwardButton.top) should] beZero];
+            [[theValue(calendarView.monthForwardButton.height) should] equal: theValue(calendarView.monthBar.height)];
+            [[theValue(calendarView.monthForwardButton.width) should] equal: theValue(60)];
         });
 
         it(@"should have a grid view", ^{
@@ -103,12 +125,52 @@ describe(@"CalendarView", ^{
         it(@"should have selected appropriate cell view", ^{
             [[theValue([[calendarView.gridView.subviews objectAtIndex: 18] state]) should] equal: theValue(UIControlStateSelected)];
         });
+
+        it(@"should advance to next month when forward button is pressed", ^{
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            int oldMonth = [calendar components: NSMonthCalendarUnit fromDate: calendarView.selectedDate].month;
+            [calendarView.monthForwardButton sendActionsForControlEvents: UIControlEventTouchUpInside];
+            int newMonth = [calendar components: NSMonthCalendarUnit fromDate: calendarView.selectedDate].month;
+            [[theValue(newMonth) should] equal: theValue(oldMonth + 1)];
+        });
+
+        it(@"should advance to previous month when back button is pressed", ^{
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            int oldMonth = [calendar components: NSMonthCalendarUnit fromDate: calendarView.selectedDate].month;
+            [calendarView.monthBackButton sendActionsForControlEvents: UIControlEventTouchUpInside];
+            NSLog(@"targets = %@, actions = %@",
+                  [calendarView.monthBackButton allTargets],
+                  [calendarView.monthBackButton actionsForTarget: calendarView
+                                                 forControlEvent: UIControlEventTouchUpInside]);
+            int newMonth = [calendar components: NSMonthCalendarUnit fromDate: calendarView.selectedDate].month;
+            [[theValue(newMonth) should] equal: theValue(oldMonth - 1)];
+        });
     });
 
     context(@"when stylesheet is set", ^{
         beforeEach(^{
             [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
-            calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011
+
+            [calendarView layoutSubviews];
+        });
+
+        it(@"should style month bar appropriately", ^{
+            [calendarView.monthBar.style shouldNotBeNil];
+            [[calendarView.monthBar.style should] equal: TTSTYLE(calendarMonthBarStyle)];
+        });
+
+        it(@"should style month label appropriately", ^{
+            [calendarView.monthLabel.style shouldNotBeNil];
+            [[calendarView.monthLabel.backgroundColor should] equal: [UIColor clearColor]];
+            [[calendarView.monthLabel.style should] equal: TTSTYLE(calendarMonthLabelStyle)];
+        });
+
+        it(@"should style month navigation buttons", ^{
+            [[[calendarView.monthBackButton styleForState: UIControlStateNormal] should] equal:
+             [TTSTYLESHEET styleWithSelector: @"calendarMonthBackButton:" forState: UIControlStateNormal]];
+
+            [[[calendarView.monthForwardButton styleForState: UIControlStateNormal] should] equal:
+             [TTSTYLESHEET styleWithSelector: @"calendarMonthForwardButton:" forState: UIControlStateNormal]];
         });
 
         it(@"should have cells styled appropriately", ^{

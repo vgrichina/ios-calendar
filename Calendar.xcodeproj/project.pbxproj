@@ -282,6 +282,13 @@
 			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
 			remoteInfo = Three20UI;
 		};
+		D545C74F13DDFF4E008283F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5B46D0713CE22CD0079A9C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5B46D0F13CE22CD0079A9C2;
+			remoteInfo = Calendar;
+		};
 		D5B46D2513CE22CD0079A9C2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D5B46D0713CE22CD0079A9C2 /* Project object */;
@@ -992,6 +999,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D545C75013DDFF4E008283F8 /* PBXTargetDependency */,
 			);
 			name = CalendarDemo;
 			productName = CalendarDemo;
@@ -1346,6 +1354,11 @@
 			isa = PBXTargetDependency;
 			name = Three20UI;
 			targetProxy = 320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */;
+		};
+		D545C75013DDFF4E008283F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D5B46D0F13CE22CD0079A9C2 /* Calendar */;
+			targetProxy = D545C74F13DDFF4E008283F8 /* PBXContainerItemProxy */;
 		};
 		D5B46D2613CE22CD0079A9C2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
