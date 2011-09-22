@@ -3,7 +3,165 @@ h2. Introduction
 ios-calendar is a stylable month calendar view for use in iPhone applications. It uses "Three20 framework":http://three20.info heavily, especially for styling.
 While there are existing implementations ("Kal":https://github.com/klazuka/Kal and @TKCalendarMonthView@ from "Tapku Library":https://github.com/devinross/tapkulibrary, they are quite limited. In particular they both replicate styling and functionality of iPhone Calendar app and there is basically no easy way to adjust them. In addition to this – only portrait view is supported in them.
 
-ios-calenar was developed to solve aforementioned problems. It's default design is heavily inspired by "MoMa iPhone app".
+ios-calenar was developed to solve aforementioned problems. It's default design is heavily inspired by "MoMa iPhone app":http://itunes.apple.com/us/app/moma/id383990455?mt=8.
+
+h2. Usage sample
+
+XCode project on GitHub contains sample target - CalendarDemo. Here are main highlights:
+
+h3. CalendarDemoViewController.m
+
+<pre><code>#import "CalendarDemoViewController.h"
+
+#import <Three20UICommon/Three20UICommon+Additions.h>
+
+@implementation CalendarDemoViewController
+
+@synthesize calendarView;
+
+- (void) loadView {
+    [super loadView];
+
+    self.calendarView = [[CXCalendarView new] autorelease];
+    [self.view addSubview: self.calendarView];
+    self.calendarView.frame = self.view.bounds;
+    self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    self.calendarView.selectedDate = [NSDate date];
+
+    self.calendarView.delegate = self;
+}
+
+- (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
+    return YES;
+}
+
+#pragma mark CXCalendarViewDelegate
+
+- (void) calendarView: (CXCalendarView *) calendarView
+        didSelectDate: (NSDate *) date {
+
+    NSLog(@"Selected date: %@", date);
+    TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);
+}
+
+@end</code></pre>
 
 
-h2. TODO
+h3. CalendarDemoAppDelegate.m
+
+There is one very important thing to do in app delegate – set up Three20 styling. There is sample stylesheet (inspired by MoMA) – @TestStyleSheet@.
+
+<pre><code>#import "CalendarDemoAppDelegate.h"
+
+#import "TestStyleSheet.h"
+#import "CalendarDemoViewController.h"
+
+@implementation CalendarDemoAppDelegate
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
+
+- (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
+    [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
+
+    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[CalendarDemoViewController alloc] init];
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+@end</code></pre>
+
+h3. Styling
+
+Here's default stylesheet for you to study:
+
+<pre><code>#import "TestStyleSheet.h"
+
+@implementation TestStyleSheet
+
+- (TTStyle *) calendarCellStyle: (UIControlState) state {
+    if (state & UIControlStateDisabled) {
+        return [TTTextStyle styleWithColor: [UIColor clearColor] next: nil];
+    }
+
+    if (state & UIControlStateSelected) {
+        return [TTSolidFillStyle styleWithColor: [UIColor grayColor] next:
+                [TTTextStyle styleWithColor: [UIColor whiteColor] next: nil]];
+    }
+
+    return [TTTextStyle styleWithColor: [UIColor grayColor] next: nil];
+}
+
+- (TTStyle *) calendarMonthBarStyle {
+    return
+    [TTLinearGradientFillStyle styleWithColor1: RGBCOLOR(188, 200, 215)
+                                        color2: RGBCOLOR(125, 150, 179) next:
+     [TTFourBorderStyle styleWithTop: RGBCOLOR(213, 221, 230)
+                               right: nil
+                              bottom: RGBCOLOR(57, 70, 84)
+                                left: nil
+                               width: 1 next: nil]];
+
+}
+
+- (TTStyle *) calendarMonthBackButton: (UIControlState) state {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
+}
+
+- (TTStyle *) calendarMonthForwardButton: (UIControlState) state {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
+}
+
+- (TTStyle *) calendarMonthLabelStyle {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
+                         color: [UIColor whiteColor]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1) next: nil];
+}
+
+- (TTStyle *) calendarGridViewStyle {
+    return [TTSolidFillStyle styleWithColor: [UIColor whiteColor] next: nil];
+}
+
+@end</code></pre>
+
+
+h2. License
+
+Code is distributed under MIT license:
+
+<pre>Copyright (C) 2011 by Componentix
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+
+
+
