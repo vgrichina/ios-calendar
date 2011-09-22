@@ -5,6 +5,8 @@ While there are existing implementations ("Kal":https://github.com/klazuka/Kal a
 
 ios-calenar was developed to solve aforementioned problems. It's default design is heavily inspired by "MoMa iPhone app":http://itunes.apple.com/us/app/moma/id383990455?mt=8.
 
+!http://www.componentix.com/blog_images/ios_calendar_demo.png!
+
 h2. Project setup
 
 While not elegant at all, currently the best method to add ios-calendar to your project is just to drop its source code in it (from "Calendar" group).
