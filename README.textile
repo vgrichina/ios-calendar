@@ -5,6 +5,11 @@ While there are existing implementations ("Kal":https://github.com/klazuka/Kal a
 
 ios-calenar was developed to solve aforementioned problems. It's default design is heavily inspired by "MoMa iPhone app":http://itunes.apple.com/us/app/moma/id383990455?mt=8.
 
+h2. Project setup
+
+While not elegant at all, currently the best method to add ios-calendar to your project is just to drop its source code in it (from "Calendar" group).
+It is possible to use it as dependency, but only when your project doesn't itself use Three20. Otherwise build results in XCode crash. I'm looking for suggestions on how better to resolve this issue.
+
 h2. Usage sample
 
 XCode project on GitHub contains sample target - CalendarDemo. Here are main highlights:
