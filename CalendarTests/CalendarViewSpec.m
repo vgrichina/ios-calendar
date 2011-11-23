@@ -27,6 +27,34 @@ describe(@"CalendarView", ^{
          [[NSDate date] timeIntervalSince1970] withDelta: 1.0];
     });
 
+    context(@"when month slides from 1 to 12", ^{
+        beforeEach(^{
+            calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1262322305.0]; // 1th Jan, 2010
+            [calendarView layoutSubviews];
+            [calendarView monthBack];
+        });
+        
+        it(@"should decrease year", ^{
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            [[theValue([calendar components:NSYearCalendarUnit fromDate:
+                        calendarView.selectedDate ].year) should] equal: theValue(2009)];
+        });
+    });
+    
+    context(@"when month slides from 12 to 1", ^{
+        beforeEach(^{
+            calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1293753600.0]; // 31th Dec, 2010
+            [calendarView layoutSubviews];
+            [calendarView monthForward];
+        });
+        
+        it(@"should increase year", ^{
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            [[theValue([calendar components:NSYearCalendarUnit fromDate:
+                        calendarView.selectedDate ].year) should] equal: theValue(2011)];
+        });
+    });
+    
     context(@"when given valid date", ^{
         beforeEach(^{
             calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011

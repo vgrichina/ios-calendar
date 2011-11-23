@@ -189,6 +189,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
     int month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
+    //Break cycle of monthes
+    if ((month == 1) && (selectedMonth == 12))
+        month = 13;
+    if ((month == 12) && (selectedMonth == 1))
+        month = 0;
     while (month <= selectedMonth) {
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
@@ -203,6 +208,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
             date = [calendar dateByAddingComponents: dayStep toDate: date options: 0];
             month = [calendar components: NSMonthCalendarUnit fromDate: date].month;
+            //Break cycle of monthes
+            if ((month == 1) && (selectedMonth == 12))
+                month = 13;
+            if ((month == 12) && (selectedMonth == 1))
+                month = 0;
         }
     }
 
