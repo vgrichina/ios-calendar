@@ -19,7 +19,8 @@ describe(@"CalendarView", ^{
     __block CXCalendarView *calendarView = nil;
 
     beforeEach(^{
-        calendarView = [[[CXCalendarView alloc] initWithFrame: CGRectMake(0, 0, 320, 480)] autorelease];
+        calendarView = [[[CXCalendarView alloc] init] autorelease];
+        calendarView.frame = CGRectMake(0, 0, 320, 480);
     });
 
     it(@"should be initialized with current date", ^{
