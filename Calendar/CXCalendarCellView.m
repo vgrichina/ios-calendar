@@ -10,6 +10,14 @@
 
 @implementation CXCalendarCellView
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setStylesWithSelector:@"calendarCellStyle:"];
+    }
+    return self;
+}
+
 - (void) dealloc {
     [_date release];
 

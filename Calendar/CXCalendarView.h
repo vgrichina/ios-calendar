@@ -14,14 +14,20 @@
 @protocol CXCalendarViewDelegate;
 
 @interface CXCalendarView : TTView {
+@protected
+    NSCalendar *_calendar;
+
     NSDate *_selectedDate;
 
     TTView *_monthBar;
     TTLabel *_monthLabel;
     TTButton *_monthBackButton;
     TTButton *_monthForwardButton;
+    TTView *_weekdayBar;
     TTView *_gridView;
 }
+
+@property(retain) NSCalendar *calendar;
 
 @property(retain) NSDate *selectedDate;
 
@@ -29,7 +35,11 @@
 @property(readonly) TTLabel *monthLabel;
 @property(readonly) TTButton *monthBackButton;
 @property(readonly) TTButton *monthForwardButton;
+@property(readonly) TTView *weekdayBar;
 @property(readonly) TTView *gridView;
+
+@property(assign) CGFloat monthBarHeight;
+@property(assign) CGFloat weekBarHeight;
 
 @property(assign) id<CXCalendarViewDelegate> delegate;
 
@@ -37,6 +47,10 @@
 
 - (void) monthForward;
 - (void) monthBack;
+
+- (CGFloat)cellWidth;
+
+- (void) reset;
 
 @end
 
