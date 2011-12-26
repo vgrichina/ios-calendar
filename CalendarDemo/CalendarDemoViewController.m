@@ -17,6 +17,8 @@
 - (void) loadView {
     [super loadView];
 
+    self.view.backgroundColor = [UIColor whiteColor];
+
     self.calendarView = [[CXCalendarView new] autorelease];
     [self.view addSubview: self.calendarView];
     self.calendarView.frame = self.view.bounds;
