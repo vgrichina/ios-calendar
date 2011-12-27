@@ -19,7 +19,7 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.calendarView = [[CXCalendarView new] autorelease];
+    self.calendarView = [[[CXCalendarView alloc] initWithFrame: self.view.bounds] autorelease];
     [self.view addSubview: self.calendarView];
     self.calendarView.frame = self.view.bounds;
     self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

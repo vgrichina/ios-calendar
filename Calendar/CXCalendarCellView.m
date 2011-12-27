@@ -10,11 +10,11 @@
 
 @implementation CXCalendarCellView
 
-- (id)init {
-    self = [super init];
-    if (self) {
+- (id) initWithFrame: (CGRect) frame {
+    if ((self = [super initWithFrame: frame])) {
         [self setStylesWithSelector:@"calendarCellStyle:"];
     }
+
     return self;
 }
 

@@ -27,9 +27,8 @@ static const CGFloat kGridMargin = 4;
 
 static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
-- (id) init {
-    self = [super init];
-    if (self) {
+- (id) initWithFrame: (CGRect) frame {
+    if ((self = [super initWithFrame: frame])) {
         self.selectedDate = [NSDate date];
         self.monthBarHeight = 48;
         self.weekBarHeight = 32;
@@ -45,14 +44,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     [super dealloc];
 }
 
-- (NSCalendar *)calendar {
+- (NSCalendar *) calendar {
     if (!_calendar) {
         _calendar = [[NSCalendar currentCalendar] retain];
     }
+
     return _calendar;
 }
 
-- (void)setCalendar:(NSCalendar *)calendar {
+- (void) setCalendar: (NSCalendar *) calendar {
     if (_calendar != calendar) {
         [_calendar release];
         _calendar = [calendar retain];
@@ -147,11 +147,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     NSDateComponents *dayStep = [[NSDateComponents new] autorelease];
     dayStep.day = 1;
     int month = [self.calendar components: NSMonthCalendarUnit fromDate: date].month;
-    //Break cycle of monthes
-    if ((month == 1) && (selectedMonth == 12))
+
+    // Break cycle of monthes
+    if ((month == 1) && (selectedMonth == 12)) {
         month = 13;
-    if ((month == 12) && (selectedMonth == 1))
+    }
+    if ((month == 12) && (selectedMonth == 1)) {
         month = 0;
+    }
+
     while (month <= selectedMonth) {
         for (int i = 0; i < 7; i++) {
             CXCalendarCellView *cellView = [[CXCalendarCellView new] autorelease];
@@ -166,11 +170,14 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
             date = [self.calendar dateByAddingComponents: dayStep toDate: date options: 0];
             month = [self.calendar components: NSMonthCalendarUnit fromDate: date].month;
-            //Break cycle of monthes
-            if ((month == 1) && (selectedMonth == 12))
+
+            // Break cycle of monthes
+            if ((month == 1) && (selectedMonth == 12)) {
                 month = 13;
-            if ((month == 12) && (selectedMonth == 1))
+            }
+            if ((month == 12) && (selectedMonth == 1)) {
                 month = 0;
+            }
         }
     }
 
@@ -297,7 +304,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _gridView;
 }
 
-- (CGFloat)cellWidth {
+- (CGFloat) cellWidth {
     return (self.width - kGridMargin * 2) / 7.0;
 }
 

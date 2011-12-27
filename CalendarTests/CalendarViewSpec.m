@@ -19,8 +19,7 @@ describe(@"CalendarView", ^{
     __block CXCalendarView *calendarView = nil;
 
     beforeEach(^{
-        calendarView = [[[CXCalendarView alloc] init] autorelease];
-        calendarView.frame = CGRectMake(0, 0, 320, 480);
+        calendarView = [[[CXCalendarView alloc] initWithFrame: CGRectMake(0, 0, 320, 480)] autorelease];        
     });
 
     it(@"should be initialized with current date", ^{
@@ -34,28 +33,28 @@ describe(@"CalendarView", ^{
             [calendarView layoutSubviews];
             [calendarView monthBack];
         });
-        
+
         it(@"should decrease year", ^{
             NSCalendar *calendar = [NSCalendar currentCalendar];
-            [[theValue([calendar components:NSYearCalendarUnit fromDate:
+            [[theValue([calendar components: NSYearCalendarUnit fromDate:
                         calendarView.selectedDate ].year) should] equal: theValue(2009)];
         });
     });
-    
+
     context(@"when month slides from 12 to 1", ^{
         beforeEach(^{
             calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1293753600.0]; // 31th Dec, 2010
             [calendarView layoutSubviews];
             [calendarView monthForward];
         });
-        
+
         it(@"should increase year", ^{
             NSCalendar *calendar = [NSCalendar currentCalendar];
-            [[theValue([calendar components:NSYearCalendarUnit fromDate:
+            [[theValue([calendar components: NSYearCalendarUnit fromDate:
                         calendarView.selectedDate ].year) should] equal: theValue(2011)];
         });
     });
-    
+
     context(@"when given valid date", ^{
         beforeEach(^{
             calendarView.selectedDate = [NSDate dateWithTimeIntervalSince1970: 1310601218.602]; // 14th July, 2011

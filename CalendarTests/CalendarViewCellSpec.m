@@ -16,8 +16,7 @@ describe(@"CalendarCellView", ^{
     __block CXCalendarCellView *cellView = nil;
 
     beforeEach(^{
-        cellView = [[[CXCalendarCellView alloc] init] autorelease];
-        cellView.frame = CGRectMake(0, 0, 100, 50);
+        cellView = [[[CXCalendarCellView alloc] initWithFrame: CGRectMake(0, 0, 100, 50)] autorelease];
     });
 
     context(@"when created", ^{
