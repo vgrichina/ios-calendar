@@ -10,32 +10,22 @@
 
 @implementation CXCalendarCellView
 
-- (id) initWithFrame: (CGRect) frame {
-    if ((self = [super initWithFrame: frame])) {
-        [self setStylesWithSelector:@"calendarCellStyle:"];
+- (NSUInteger) day {
+    return _day;
+}
+
+- (void) setDay: (NSUInteger) day {
+    if (_day != day) {
+        _day = day;
+        [self setTitle: [NSString stringWithFormat: @"%d", _day] forState: UIControlStateNormal];
     }
-
-    return self;
 }
 
-- (void) dealloc {
-    [_date release];
-
-    [super dealloc];
-}
-
-- (NSDate *) date {
-    return _date;
-}
-
-- (void) setDate: (NSDate *) date {
-    if (![date isEqual: _date]) {
-        [_date release];
-        _date = [date retain];
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        int day = [calendar components: NSDayCalendarUnit fromDate: self.date].day;
-        [self setTitle: [NSString stringWithFormat: @"%d", day] forState: UIControlStateNormal];
-    }
+- (NSDate *) dateWithBaseDate: (NSDate *) baseDate withCalendar: (NSCalendar *)calendar {
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit
+                                               fromDate:baseDate];
+    components.day = self.day;
+    return [calendar dateFromComponents:components];
 }
 
 @end

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1436B6C814D1AF8200DD7BEA /* CXMultidateCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1436B6C614D1AF8200DD7BEA /* CXMultidateCalendarView.h */; };
+		1436B6C914D1AF8200DD7BEA /* CXMultidateCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1436B6C714D1AF8200DD7BEA /* CXMultidateCalendarView.m */; };
+		1436B6CB14D1B66600DD7BEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436B6CA14D1B66600DD7BEA /* UIKit.framework */; };
+		1436B6CC14D1B68100DD7BEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436B6CA14D1B66600DD7BEA /* UIKit.framework */; };
+		1436B6CD14D1B68700DD7BEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436B6CA14D1B66600DD7BEA /* UIKit.framework */; };
+		1436B6CF14D1BBBD00DD7BEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436B6CE14D1BBBD00DD7BEA /* CoreGraphics.framework */; };
+		1436B6D014D1BF5800DD7BEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1436B6CE14D1BBBD00DD7BEA /* CoreGraphics.framework */; };
 		320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
 		D52AF60013CFA0EA001B5F71 /* Kiwi.h in Headers */ = {isa = PBXBuildFile; fileRef = D52AF56B13CFA0EA001B5F71 /* Kiwi.h */; };
 		D52AF60113CFA0EA001B5F71 /* KiwiBlockMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = D52AF56C13CFA0EA001B5F71 /* KiwiBlockMacros.h */; };
@@ -157,35 +164,17 @@
 		D52AF72513CFA15D001B5F71 /* NSObject+KiwiStubAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FB13CFA0EA001B5F71 /* NSObject+KiwiStubAdditions.m */; };
 		D52AF72713CFA15D001B5F71 /* NSObject+KiwiVerifierAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FD13CFA0EA001B5F71 /* NSObject+KiwiVerifierAdditions.m */; };
 		D52AF72913CFA15D001B5F71 /* NSValue+KiwiAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D52AF5FF13CFA0EA001B5F71 /* NSValue+KiwiAdditions.m */; };
-		D54D976713D60D1100B2C5C8 /* TestStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */; };
-		D54D977313D643A800B2C5C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D2013CE22CD0079A9C2 /* UIKit.framework */; };
 		D54D977413D643A800B2C5C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1313CE22CD0079A9C2 /* Foundation.framework */; };
-		D54D977513D643A800B2C5C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */; };
 		D54D977B13D643A800B2C5C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D54D977913D643A800B2C5C8 /* InfoPlist.strings */; };
 		D54D977D13D643A800B2C5C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D977C13D643A800B2C5C8 /* main.m */; };
 		D54D978113D643A900B2C5C8 /* CalendarDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D978013D643A900B2C5C8 /* CalendarDemoAppDelegate.m */; };
 		D54D978313D643A900B2C5C8 /* CalendarDemoViewController.h in Resources */ = {isa = PBXBuildFile; fileRef = D54D978213D643A900B2C5C8 /* CalendarDemoViewController.h */; };
 		D54D978513D643A900B2C5C8 /* CalendarDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */; };
 		D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1013CE22CD0079A9C2 /* libCalendar.a */; };
-		D54D979013D6492400B2C5C8 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
-		D54D979113D6492400B2C5C8 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
-		D54D979213D6492400B2C5C8 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
-		D54D979313D6492400B2C5C8 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		D54D979413D6492400B2C5C8 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
-		D54D979513D6492400B2C5C8 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A737074758E53BA54BE94 /* libThree20UINavigator.a */; };
 		D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
-		D54D979713D64C1C00B2C5C8 /* TestStyleSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */; };
-		D5599F2613CFAFE90098A133 /* libThree20Core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A2827FEC940B25BC42C64 /* libThree20Core.a */; };
-		D5599F2713CFAFE90098A133 /* libThree20Network.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A5A189C235877202780D4 /* libThree20Network.a */; };
-		D5599F2813CFAFE90098A133 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
-		D5599F2913CFAFE90098A133 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		D5599F2A13CFAFE90098A133 /* libThree20UICommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3201088596B4756681693704 /* libThree20UICommon.a */; };
-		D5599F2B13CFAFE90098A133 /* libThree20UINavigator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320A737074758E53BA54BE94 /* libThree20UINavigator.a */; };
 		D5B46D1413CE22CD0079A9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1313CE22CD0079A9C2 /* Foundation.framework */; };
 		D5B46D1F13CE22CD0079A9C2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1E13CE22CD0079A9C2 /* SenTestingKit.framework */; };
-		D5B46D2113CE22CD0079A9C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D2013CE22CD0079A9C2 /* UIKit.framework */; };
 		D5B46D2213CE22CD0079A9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1313CE22CD0079A9C2 /* Foundation.framework */; };
-		D5B46D2413CE22CD0079A9C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */; };
 		D5B46D2713CE22CD0079A9C2 /* libCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1013CE22CD0079A9C2 /* libCalendar.a */; };
 		D5B46D2D13CE22CD0079A9C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5B46D2B13CE22CD0079A9C2 /* InfoPlist.strings */; };
 		D5D427AF13CE275100A90CCC /* CXCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D427AD13CE275100A90CCC /* CXCalendarView.h */; };
@@ -198,90 +187,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3201088596B4756681693702 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20UICommon;
-		};
-		3201088596B4756681693706 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20UICommon;
-		};
-		320A2827FEC940B25BC42C62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20Core;
-		};
-		320A2827FEC940B25BC42C66 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20Core;
-		};
-		320A5A189C235877202780D2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20Network;
-		};
-		320A5A189C235877202780D6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20Network;
-		};
-		320A737074758E53BA54BE92 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20UINavigator;
-		};
-		320A737074758E53BA54BE96 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20UINavigator;
-		};
-		320CC833B8AF0ACFD35E6222 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20Style;
-		};
-		320CC833B8AF0ACFD35E6226 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20Style;
-		};
-		320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = BEF31F390F352DF5000DE5D2;
-			remoteInfo = Three20UI;
-		};
-		320F2C48872C2E2C4DF86206 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
-			remoteInfo = Three20UI;
-		};
 		D545C74F13DDFF4E008283F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D5B46D0713CE22CD0079A9C2 /* Project object */;
@@ -296,73 +201,14 @@
 			remoteGlobalIDString = D5B46D0F13CE22CD0079A9C2;
 			remoteInfo = Calendar;
 		};
-		D5D4279B13CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20CoreUnitTests;
-		};
-		D5D4279E13CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20NetworkUnitTests;
-		};
-		D5D427A113CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20StyleUnitTests;
-		};
-		D5D427A413CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20UIUnitTests;
-		};
-		D5D427A713CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20UICommonUnitTests;
-		};
-		D5D427AA13CE25AF00A90CCC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
-			remoteInfo = Three20UINavigatorUnitTests;
-		};
-		D5ED3D191471E1C20085E6B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 662D81EF12630516005851C2;
-			remoteInfo = "Three20Network-Xcode3.2.5";
-		};
-		D5ED3D1B1471E1C20085E6B8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 662D81B2126304EB005851C2;
-			remoteInfo = "Three20NetworkUnitTests-Xcode3.2.5";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3201088596B4756681693700 /* Three20UICommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UICommon.xcodeproj; path = three20/src/Three20UICommon/Three20UICommon.xcodeproj; sourceTree = SOURCE_ROOT; };
-		320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Core.xcodeproj; path = three20/src/Three20Core/Three20Core.xcodeproj; sourceTree = SOURCE_ROOT; };
-		320A5A189C235877202780D0 /* Three20Network.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Network.xcodeproj; path = three20/src/Three20Network/Three20Network.xcodeproj; sourceTree = SOURCE_ROOT; };
-		320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UINavigator.xcodeproj; path = three20/src/Three20UINavigator/Three20UINavigator.xcodeproj; sourceTree = SOURCE_ROOT; };
+		1436B6C614D1AF8200DD7BEA /* CXMultidateCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMultidateCalendarView.h; sourceTree = "<group>"; };
+		1436B6C714D1AF8200DD7BEA /* CXMultidateCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMultidateCalendarView.m; sourceTree = "<group>"; };
+		1436B6CA14D1B66600DD7BEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1436B6CE14D1BBBD00DD7BEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		320AF8492C47A4D819F7C450 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.frameworks; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		320B6C86F11D9990244A9730 /* Three20.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Three20.bundle; path = three20/src/Three20.bundle; sourceTree = SOURCE_ROOT; };
-		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
-		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		D52AF56B13CFA0EA001B5F71 /* Kiwi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Kiwi.h; path = Kiwi/Kiwi/Kiwi.h; sourceTree = SOURCE_ROOT; };
 		D52AF56C13CFA0EA001B5F71 /* KiwiBlockMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KiwiBlockMacros.h; path = Kiwi/Kiwi/KiwiBlockMacros.h; sourceTree = SOURCE_ROOT; };
 		D52AF56D13CFA0EA001B5F71 /* KiwiConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KiwiConfiguration.h; path = Kiwi/Kiwi/KiwiConfiguration.h; sourceTree = SOURCE_ROOT; };
@@ -512,8 +358,6 @@
 		D52AF5FD13CFA0EA001B5F71 /* NSObject+KiwiVerifierAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+KiwiVerifierAdditions.m"; path = "Kiwi/Kiwi/NSObject+KiwiVerifierAdditions.m"; sourceTree = SOURCE_ROOT; };
 		D52AF5FE13CFA0EA001B5F71 /* NSValue+KiwiAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+KiwiAdditions.h"; path = "Kiwi/Kiwi/NSValue+KiwiAdditions.h"; sourceTree = SOURCE_ROOT; };
 		D52AF5FF13CFA0EA001B5F71 /* NSValue+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+KiwiAdditions.m"; path = "Kiwi/Kiwi/NSValue+KiwiAdditions.m"; sourceTree = SOURCE_ROOT; };
-		D54D976513D60D1100B2C5C8 /* TestStyleSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestStyleSheet.h; sourceTree = "<group>"; };
-		D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStyleSheet.m; sourceTree = "<group>"; };
 		D54D977113D643A800B2C5C8 /* CalendarDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalendarDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54D977813D643A800B2C5C8 /* CalendarDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalendarDemo-Info.plist"; sourceTree = "<group>"; };
 		D54D977A13D643A800B2C5C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -528,8 +372,6 @@
 		D5B46D1713CE22CD0079A9C2 /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
 		D5B46D1D13CE22CD0079A9C2 /* CalendarTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B46D1E13CE22CD0079A9C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D5B46D2013CE22CD0079A9C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		D5B46D2A13CE22CD0079A9C2 /* CalendarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalendarTests-Info.plist"; sourceTree = "<group>"; };
 		D5B46D2C13CE22CD0079A9C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D5D427AD13CE275100A90CCC /* CXCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXCalendarView.h; sourceTree = "<group>"; };
@@ -545,17 +387,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */,
-				D54D979013D6492400B2C5C8 /* libThree20Core.a in Frameworks */,
-				D54D979113D6492400B2C5C8 /* libThree20Network.a in Frameworks */,
-				D54D979213D6492400B2C5C8 /* libThree20Style.a in Frameworks */,
-				D54D979313D6492400B2C5C8 /* libThree20UI.a in Frameworks */,
-				D54D979413D6492400B2C5C8 /* libThree20UICommon.a in Frameworks */,
-				D54D979513D6492400B2C5C8 /* libThree20UINavigator.a in Frameworks */,
-				D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */,
-				D54D977313D643A800B2C5C8 /* UIKit.framework in Frameworks */,
+				1436B6CF14D1BBBD00DD7BEA /* CoreGraphics.framework in Frameworks */,
+				1436B6CB14D1B66600DD7BEA /* UIKit.framework in Frameworks */,
 				D54D977413D643A800B2C5C8 /* Foundation.framework in Frameworks */,
-				D54D977513D643A800B2C5C8 /* CoreGraphics.framework in Frameworks */,
+				D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */,
+				D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +399,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1436B6CD14D1B68700DD7BEA /* UIKit.framework in Frameworks */,
 				320AF8492C47A4D819F7C451 /* QuartzCore.framework in Frameworks */,
 				D5B46D1413CE22CD0079A9C2 /* Foundation.framework in Frameworks */,
 			);
@@ -572,17 +409,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5599F2613CFAFE90098A133 /* libThree20Core.a in Frameworks */,
-				D5599F2713CFAFE90098A133 /* libThree20Network.a in Frameworks */,
-				D5599F2813CFAFE90098A133 /* libThree20Style.a in Frameworks */,
-				D5599F2913CFAFE90098A133 /* libThree20UI.a in Frameworks */,
-				D5599F2A13CFAFE90098A133 /* libThree20UICommon.a in Frameworks */,
-				D5599F2B13CFAFE90098A133 /* libThree20UINavigator.a in Frameworks */,
+				1436B6D014D1BF5800DD7BEA /* CoreGraphics.framework in Frameworks */,
+				1436B6CC14D1B68100DD7BEA /* UIKit.framework in Frameworks */,
 				D5D427BF13CE2AA700A90CCC /* QuartzCore.framework in Frameworks */,
 				D5B46D1F13CE22CD0079A9C2 /* SenTestingKit.framework in Frameworks */,
-				D5B46D2113CE22CD0079A9C2 /* UIKit.framework in Frameworks */,
 				D5B46D2213CE22CD0079A9C2 /* Foundation.framework in Frameworks */,
-				D5B46D2413CE22CD0079A9C2 /* CoreGraphics.framework in Frameworks */,
 				D5B46D2713CE22CD0079A9C2 /* libCalendar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,62 +421,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3201088596B4756681693703 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3201088596B4756681693704 /* libThree20UICommon.a */,
-				D5D427A813CE25AF00A90CCC /* UICommonUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		320A2827FEC940B25BC42C63 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				320A2827FEC940B25BC42C64 /* libThree20Core.a */,
-				D5D4279C13CE25AF00A90CCC /* CoreUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		320A5A189C235877202780D3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				320A5A189C235877202780D4 /* libThree20Network.a */,
-				D5ED3D1A1471E1C20085E6B8 /* libThree20Network-Xcode3.2.5.a */,
-				D5D4279F13CE25AF00A90CCC /* NetworkUnitTests.octest */,
-				D5ED3D1C1471E1C20085E6B8 /* NetworkUnitTests-Xcode3.2.5.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		320A737074758E53BA54BE93 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				320A737074758E53BA54BE94 /* libThree20UINavigator.a */,
-				D5D427AB13CE25AF00A90CCC /* UINavigatorUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		320CC833B8AF0ACFD35E6223 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				320CC833B8AF0ACFD35E6224 /* libThree20Style.a */,
-				D5D427A213CE25AF00A90CCC /* StyleUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		320F2C48872C2E2C4DF86203 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				320F2C48872C2E2C4DF86204 /* libThree20UI.a */,
-				D5D427A513CE25AF00A90CCC /* UIUnitTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		D54D977613D643A800B2C5C8 /* CalendarDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,17 +468,11 @@
 		D5B46D1213CE22CD0079A9C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3201088596B4756681693700 /* Three20UICommon.xcodeproj */,
-				320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */,
-				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
-				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
-				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
-				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
+				1436B6CA14D1B66600DD7BEA /* UIKit.framework */,
+				1436B6CE14D1BBBD00DD7BEA /* CoreGraphics.framework */,
 				D5B46D1313CE22CD0079A9C2 /* Foundation.framework */,
 				D5B46D1E13CE22CD0079A9C2 /* SenTestingKit.framework */,
-				D5B46D2013CE22CD0079A9C2 /* UIKit.framework */,
-				D5B46D2313CE22CD0079A9C2 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -716,6 +485,8 @@
 				D5D427AE13CE275100A90CCC /* CXCalendarView.m */,
 				D5D427B113CE279D00A90CCC /* CXCalendarCellView.h */,
 				D5D427B213CE279D00A90CCC /* CXCalendarCellView.m */,
+				1436B6C614D1AF8200DD7BEA /* CXMultidateCalendarView.h */,
+				1436B6C714D1AF8200DD7BEA /* CXMultidateCalendarView.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -723,7 +494,6 @@
 		D5B46D1613CE22CD0079A9C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				320B6C86F11D9990244A9730 /* Three20.bundle */,
 				D5B46D1713CE22CD0079A9C2 /* Calendar-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -736,8 +506,6 @@
 				D5B46D2913CE22CD0079A9C2 /* Supporting Files */,
 				D5D427B613CE281D00A90CCC /* CalendarViewSpec.m */,
 				D5D427BA13CE283A00A90CCC /* CalendarViewCellSpec.m */,
-				D54D976513D60D1100B2C5C8 /* TestStyleSheet.h */,
-				D54D976613D60D1100B2C5C8 /* TestStyleSheet.m */,
 			);
 			path = CalendarTests;
 			sourceTree = "<group>";
@@ -998,6 +766,7 @@
 				D52AF68F13CFA0EB001B5F71 /* NSObject+KiwiStubAdditions.h in Headers */,
 				D52AF69113CFA0EB001B5F71 /* NSObject+KiwiVerifierAdditions.h in Headers */,
 				D52AF69313CFA0EB001B5F71 /* NSValue+KiwiAdditions.h in Headers */,
+				1436B6C814D1AF8200DD7BEA /* CXMultidateCalendarView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1033,12 +802,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3201088596B4756681693701 /* PBXTargetDependency */,
-				320A2827FEC940B25BC42C61 /* PBXTargetDependency */,
-				320A737074758E53BA54BE91 /* PBXTargetDependency */,
-				320F2C48872C2E2C4DF86201 /* PBXTargetDependency */,
-				320A5A189C235877202780D1 /* PBXTargetDependency */,
-				320CC833B8AF0ACFD35E6221 /* PBXTargetDependency */,
 			);
 			name = Calendar;
 			productName = Calendar;
@@ -1083,32 +846,6 @@
 			mainGroup = D5B46D0513CE22CD0079A9C2;
 			productRefGroup = D5B46D1113CE22CD0079A9C2 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 320A2827FEC940B25BC42C63 /* Products */;
-					ProjectRef = 320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */;
-				},
-				{
-					ProductGroup = 320A5A189C235877202780D3 /* Products */;
-					ProjectRef = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
-				},
-				{
-					ProductGroup = 320CC833B8AF0ACFD35E6223 /* Products */;
-					ProjectRef = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
-				},
-				{
-					ProductGroup = 320F2C48872C2E2C4DF86203 /* Products */;
-					ProjectRef = 320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */;
-				},
-				{
-					ProductGroup = 3201088596B4756681693703 /* Products */;
-					ProjectRef = 3201088596B4756681693700 /* Three20UICommon.xcodeproj */;
-				},
-				{
-					ProductGroup = 320A737074758E53BA54BE93 /* Products */;
-					ProjectRef = 320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				D5B46D0F13CE22CD0079A9C2 /* Calendar */,
@@ -1117,107 +854,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3201088596B4756681693704 /* libThree20UICommon.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20UICommon.a;
-			remoteRef = 3201088596B4756681693706 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		320A2827FEC940B25BC42C64 /* libThree20Core.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20Core.a;
-			remoteRef = 320A2827FEC940B25BC42C66 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		320A5A189C235877202780D4 /* libThree20Network.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20Network.a;
-			remoteRef = 320A5A189C235877202780D6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		320A737074758E53BA54BE94 /* libThree20UINavigator.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20UINavigator.a;
-			remoteRef = 320A737074758E53BA54BE96 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		320CC833B8AF0ACFD35E6224 /* libThree20Style.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20Style.a;
-			remoteRef = 320CC833B8AF0ACFD35E6226 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		320F2C48872C2E2C4DF86204 /* libThree20UI.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libThree20UI.a;
-			remoteRef = 320F2C48872C2E2C4DF86206 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D4279C13CE25AF00A90CCC /* CoreUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = CoreUnitTests.octest;
-			remoteRef = D5D4279B13CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D4279F13CE25AF00A90CCC /* NetworkUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = NetworkUnitTests.octest;
-			remoteRef = D5D4279E13CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D427A213CE25AF00A90CCC /* StyleUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = StyleUnitTests.octest;
-			remoteRef = D5D427A113CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D427A513CE25AF00A90CCC /* UIUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UIUnitTests.octest;
-			remoteRef = D5D427A413CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D427A813CE25AF00A90CCC /* UICommonUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UICommonUnitTests.octest;
-			remoteRef = D5D427A713CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5D427AB13CE25AF00A90CCC /* UINavigatorUnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UINavigatorUnitTests.octest;
-			remoteRef = D5D427AA13CE25AF00A90CCC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5ED3D1A1471E1C20085E6B8 /* libThree20Network-Xcode3.2.5.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libThree20Network-Xcode3.2.5.a";
-			remoteRef = D5ED3D191471E1C20085E6B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D5ED3D1C1471E1C20085E6B8 /* NetworkUnitTests-Xcode3.2.5.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "NetworkUnitTests-Xcode3.2.5.octest";
-			remoteRef = D5ED3D1B1471E1C20085E6B8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D54D976F13D643A800B2C5C8 /* Resources */ = {
@@ -1263,7 +899,6 @@
 				D54D977D13D643A800B2C5C8 /* main.m in Sources */,
 				D54D978113D643A900B2C5C8 /* CalendarDemoAppDelegate.m in Sources */,
 				D54D978513D643A900B2C5C8 /* CalendarDemoViewController.m in Sources */,
-				D54D979713D64C1C00B2C5C8 /* TestStyleSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,6 +908,7 @@
 			files = (
 				D5D427B013CE275100A90CCC /* CXCalendarView.m in Sources */,
 				D5D427B413CE279D00A90CCC /* CXCalendarCellView.m in Sources */,
+				1436B6C914D1AF8200DD7BEA /* CXMultidateCalendarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1349,43 +985,12 @@
 				D52AF72913CFA15D001B5F71 /* NSValue+KiwiAdditions.m in Sources */,
 				D5D427BD13CE29AC00A90CCC /* CalendarViewSpec.m in Sources */,
 				D5D427BE13CE29AC00A90CCC /* CalendarViewCellSpec.m in Sources */,
-				D54D976713D60D1100B2C5C8 /* TestStyleSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3201088596B4756681693701 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20UICommon;
-			targetProxy = 3201088596B4756681693702 /* PBXContainerItemProxy */;
-		};
-		320A2827FEC940B25BC42C61 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20Core;
-			targetProxy = 320A2827FEC940B25BC42C62 /* PBXContainerItemProxy */;
-		};
-		320A5A189C235877202780D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20Network;
-			targetProxy = 320A5A189C235877202780D2 /* PBXContainerItemProxy */;
-		};
-		320A737074758E53BA54BE91 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20UINavigator;
-			targetProxy = 320A737074758E53BA54BE92 /* PBXContainerItemProxy */;
-		};
-		320CC833B8AF0ACFD35E6221 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20Style;
-			targetProxy = 320CC833B8AF0ACFD35E6222 /* PBXContainerItemProxy */;
-		};
-		320F2C48872C2E2C4DF86201 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Three20UI;
-			targetProxy = 320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */;
-		};
 		D545C75013DDFF4E008283F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D5B46D0F13CE22CD0079A9C2 /* Calendar */;

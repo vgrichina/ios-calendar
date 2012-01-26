@@ -39,7 +39,7 @@
         didSelectDate: (NSDate *) date {
 
     NSLog(@"Selected date: %@", date);
-    TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);
+    /*TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);*/
 }
 
 @end

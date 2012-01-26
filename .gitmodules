@@ -1,6 +1,3 @@
-[submodule "three20"]
-	path = three20
-	url = git@github.com:vgrichina/three20.git
 [submodule "Kiwi"]
 	path = Kiwi
 	url = https://github.com/allending/Kiwi

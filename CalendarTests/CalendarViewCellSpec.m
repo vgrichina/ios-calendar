@@ -21,22 +21,21 @@ describe(@"CalendarCellView", ^{
 
     context(@"when created", ^{
         it(@"should be subclass of TTButton", ^{
-            [[cellView should] beKindOfClass: [TTButton class]];
+            [[cellView should] beKindOfClass: [UIButton class]];
         });
     });
 
     context(@"when given valid date", ^{
+        static const NSUInteger DAY = 1;
+
         beforeEach(^{
-            cellView.date = [NSDate date];
+            cellView.day = DAY;
         });
 
         it(@"should display appropriate day label", ^{
-            NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSDateComponents *components = [calendar components: NSDayCalendarUnit
-                                                       fromDate: cellView.date];
             [[cellView titleForState: UIControlStateNormal] shouldNotBeNil];
             [[[cellView titleForState: UIControlStateNormal] should] equal:
-                [NSString stringWithFormat: @"%d", components.day]];
+                [NSString stringWithFormat: @"%d", DAY]];
         });
     });
 });
