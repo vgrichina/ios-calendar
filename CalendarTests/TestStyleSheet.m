@@ -63,4 +63,17 @@
     return [TTSolidFillStyle styleWithColor: [UIColor whiteColor] next: nil];
 }
 
+- (TTStyle *) calendarWeekdayLabelStyle {
+    return
+    [TTTextStyle styleWithFont: [UIFont systemFontOfSize:[UIFont systemFontSize]]
+                         color: [UIColor blackColor]
+               minimumFontSize: [UIFont systemFontSize]
+                   shadowColor: [UIColor grayColor]
+                  shadowOffset: CGSizeMake(0, 1)
+                 textAlignment: UITextAlignmentCenter
+             verticalAlignment: UIControlContentVerticalAlignmentCenter
+                 lineBreakMode: UILineBreakModeClip
+                 numberOfLines: 1 next: nil];
+}
+
 @end

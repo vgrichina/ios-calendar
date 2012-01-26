@@ -26,17 +26,16 @@ describe(@"CalendarCellView", ^{
     });
 
     context(@"when given valid date", ^{
+        static const NSUInteger DAY = 1;
+
         beforeEach(^{
-            cellView.date = [NSDate date];
+            cellView.day = DAY;
         });
 
         it(@"should display appropriate day label", ^{
-            NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSDateComponents *components = [calendar components: NSDayCalendarUnit
-                                                       fromDate: cellView.date];
             [[cellView titleForState: UIControlStateNormal] shouldNotBeNil];
             [[[cellView titleForState: UIControlStateNormal] should] equal:
-                [NSString stringWithFormat: @"%d", components.day]];
+                [NSString stringWithFormat: @"%d", DAY]];
         });
     });
 });

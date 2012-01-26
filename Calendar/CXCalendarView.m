@@ -132,17 +132,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 }
 
 - (void) monthForward {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthStep = [[NSDateComponents new] autorelease];
     monthStep.month = 1;
-    self.displayedDate = [calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
+    self.displayedDate = [self.calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
 }
 
 - (void) monthBack {
-    NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *monthStep = [[NSDateComponents new] autorelease];
     monthStep.month = -1;
-    self.displayedDate = [calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
+    self.displayedDate = [self.calendar dateByAddingComponents: monthStep toDate: self.displayedDate options: 0];
 }
 
 - (void) reset {
