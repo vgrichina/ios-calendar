@@ -11,7 +11,19 @@
 
 #import "CXCalendarCellView.h"
 
-@protocol CXCalendarViewDelegate;
+
+@class CXCalendarView;
+
+
+@protocol CXCalendarViewDelegate <NSObject>
+
+@optional
+
+- (void) calendarView: (CXCalendarView *) calendarView
+        didSelectDate: (NSDate *) selectedDate;
+
+@end
+
 
 @interface CXCalendarView : TTView {
 @protected
@@ -19,43 +31,49 @@
 
     NSDate *_selectedDate;
 
+    NSDate *_displayedDate;
+
     TTView *_monthBar;
     TTLabel *_monthLabel;
     TTButton *_monthBackButton;
     TTButton *_monthForwardButton;
     TTView *_weekdayBar;
+    NSArray *_weekdayNameLabels;
     TTView *_gridView;
+    NSArray *_dayCells;
+
+    CGFloat _monthBarHeight;
+    CGFloat _weekBarHeight;
 }
 
-@property(retain) NSCalendar *calendar;
+@property(nonatomic, retain) NSCalendar *calendar;
 
-@property(retain) NSDate *selectedDate;
+@property(nonatomic, assign) id<CXCalendarViewDelegate> delegate;
 
+@property(nonatomic, retain) NSDate *selectedDate;
+
+@property(nonatomic, retain) NSDate *displayedDate;
+@property(nonatomic, readonly) NSUInteger displayedYear;
+@property(nonatomic, readonly) NSUInteger displayedMonth;
+
+- (void) monthForward;
+- (void) monthBack;
+
+- (void) reset;
+
+// UI
 @property(readonly) TTView *monthBar;
 @property(readonly) TTLabel *monthLabel;
 @property(readonly) TTButton *monthBackButton;
 @property(readonly) TTButton *monthForwardButton;
 @property(readonly) TTView *weekdayBar;
+@property(readonly) NSArray *weekdayNameLabels;
 @property(readonly) TTView *gridView;
+@property(readonly) NSArray *dayCells;
 
 @property(assign) CGFloat monthBarHeight;
 @property(assign) CGFloat weekBarHeight;
 
-@property(assign) id<CXCalendarViewDelegate> delegate;
-
 - (CXCalendarCellView *) cellForDate: (NSDate *) date;
-
-- (void) monthForward;
-- (void) monthBack;
-
-- (CGFloat)cellWidth;
-
-- (void) reset;
-
-@end
-
-@protocol CXCalendarViewDelegate <NSObject>
-
-- (void) calendarView: (CXCalendarView *) calendarView didSelectDate: (NSDate *) date;
 
 @end
