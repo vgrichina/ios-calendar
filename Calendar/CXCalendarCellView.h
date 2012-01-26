@@ -6,13 +6,13 @@
 //  Copyright 2011 Componentix. All rights reserved.
 //
 
-#import <Three20UI/Three20UI+Additions.h>
-#import <Three20Style/Three20Style+Additions.h>
 
-@interface CXCalendarCellView : TTButton {
-    NSDate *_date;
+@interface CXCalendarCellView : UIButton {
+    NSUInteger _day;
 }
 
-@property(retain) NSDate *date;
+@property(nonatomic, assign) NSUInteger day;
+
+- (NSDate *) dateWithBaseDate: (NSDate *) baseDate withCalendar: (NSCalendar *)calendar;
 
 @end
