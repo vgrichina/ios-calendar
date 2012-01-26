@@ -6,9 +6,6 @@
 //  Copyright 2011 Componentix. All rights reserved.
 //
 
-#import <Three20UI/Three20UI+Additions.h>
-#import <Three20Style/Three20Style+Additions.h>
-
 #import "CXCalendarCellView.h"
 
 
@@ -25,7 +22,7 @@
 @end
 
 
-@interface CXCalendarView : TTView {
+@interface CXCalendarView : UIView {
 @protected
     NSCalendar *_calendar;
 
@@ -33,13 +30,13 @@
 
     NSDate *_displayedDate;
 
-    TTView *_monthBar;
-    TTLabel *_monthLabel;
-    TTButton *_monthBackButton;
-    TTButton *_monthForwardButton;
-    TTView *_weekdayBar;
+    UIView *_monthBar;
+    UILabel *_monthLabel;
+    UIButton *_monthBackButton;
+    UIButton *_monthForwardButton;
+    UIView *_weekdayBar;
     NSArray *_weekdayNameLabels;
-    TTView *_gridView;
+    UIView *_gridView;
     NSArray *_dayCells;
 
     CGFloat _monthBarHeight;
@@ -62,13 +59,13 @@
 - (void) reset;
 
 // UI
-@property(readonly) TTView *monthBar;
-@property(readonly) TTLabel *monthLabel;
-@property(readonly) TTButton *monthBackButton;
-@property(readonly) TTButton *monthForwardButton;
-@property(readonly) TTView *weekdayBar;
+@property(readonly) UIView *monthBar;
+@property(readonly) UILabel *monthLabel;
+@property(readonly) UIButton *monthBackButton;
+@property(readonly) UIButton *monthForwardButton;
+@property(readonly) UIView *weekdayBar;
 @property(readonly) NSArray *weekdayNameLabels;
-@property(readonly) TTView *gridView;
+@property(readonly) UIView *gridView;
 @property(readonly) NSArray *dayCells;
 
 @property(assign) CGFloat monthBarHeight;

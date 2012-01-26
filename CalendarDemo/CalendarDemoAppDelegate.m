@@ -8,8 +8,8 @@
 
 #import "CalendarDemoAppDelegate.h"
 
-#import "TestStyleSheet.h"
 #import "CalendarDemoViewController.h"
+
 
 @implementation CalendarDemoAppDelegate
 
@@ -17,8 +17,6 @@
 @synthesize viewController = _viewController;
 
 - (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
-    [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
-
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[CalendarDemoViewController alloc] init];

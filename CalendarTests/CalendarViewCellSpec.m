@@ -21,7 +21,7 @@ describe(@"CalendarCellView", ^{
 
     context(@"when created", ^{
         it(@"should be subclass of TTButton", ^{
-            [[cellView should] beKindOfClass: [TTButton class]];
+            [[cellView should] beKindOfClass: [UIButton class]];
         });
     });
 

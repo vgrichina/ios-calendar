@@ -10,13 +10,6 @@
 
 @implementation CXCalendarCellView
 
-- (id) initWithFrame: (CGRect) frame {
-    if ((self = [super initWithFrame: frame])) {
-        [self setStylesWithSelector:@"calendarCellStyle:"];
-    }
-    return self;
-}
-
 - (NSUInteger) day {
     return _day;
 }

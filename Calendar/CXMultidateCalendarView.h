@@ -6,10 +6,6 @@
 //  Copyright 2011 Componentix. All rights reserved.
 //
 
-
-#import <Three20UI/Three20UI+Additions.h>
-#import <Three20Style/Three20Style+Additions.h>
-
 #import "CXCalendarView.h"
 
 

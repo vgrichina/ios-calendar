@@ -8,8 +8,6 @@
 
 #import "Kiwi.h"
 
-#import "TestStyleSheet.h"
-
 #import "CXCalendarView.h"
 #import "CXCalendarCellView.h"
 
@@ -67,15 +65,17 @@ describe(@"CalendarView", ^{
         });
 
         it(@"should layout month bar appropriately", ^{
-            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
-            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+            [[theValue(calendarView.monthLabel.bounds.size.width) should] equal: theValue(calendarView.bounds.size.width)];
+            [[theValue(calendarView.monthLabel.bounds.size.height) should] equal: theValue(48)];
         });
 
         it(@"should layout month bar appropriately when frame is changed", ^{
-            calendarView.width = 50;
-            calendarView.height = 100;
-            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
-            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+            CGRect frame = calendarView.frame;
+            frame.size.width = 50;
+            frame.size.height = 100;
+            calendarView.frame = frame;
+            [[theValue(calendarView.monthLabel.bounds.size.width) should] equal: theValue(calendarView.bounds.size.width)];
+            [[theValue(calendarView.monthLabel.bounds.size.height) should] equal: theValue(48)];
         });
 
         it(@"should display appropriate month label", ^{
@@ -87,15 +87,17 @@ describe(@"CalendarView", ^{
         });
 
         it(@"should layout month label appropriately", ^{
-            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
-            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+            [[theValue(calendarView.monthLabel.bounds.size.width) should] equal: theValue(calendarView.bounds.size.width)];
+            [[theValue(calendarView.monthLabel.bounds.size.height) should] equal: theValue(48)];
         });
 
         it(@"should layout month label appropriately when frame is changed", ^{
-            calendarView.width = 50;
-            calendarView.height = 100;
-            [[theValue(calendarView.monthLabel.width) should] equal: theValue(calendarView.width)];
-            [[theValue(calendarView.monthLabel.height) should] equal: theValue(48)];
+            CGRect frame = calendarView.frame;
+            frame.size.width = 50;
+            frame.size.height = 100;
+            calendarView.frame = frame;
+            [[theValue(calendarView.monthLabel.bounds.size.width) should] equal: theValue(calendarView.bounds.size.width)];
+            [[theValue(calendarView.monthLabel.bounds.size.height) should] equal: theValue(48)];
         });
 
         it(@"should display month navigation buttons", ^{
@@ -106,15 +108,15 @@ describe(@"CalendarView", ^{
         });
 
         it(@"should layout navigation buttons appropriately", ^{
-            [[theValue(calendarView.monthBackButton.left) should] beZero];
-            [[theValue(calendarView.monthBackButton.top) should] beZero];
-            [[theValue(calendarView.monthBackButton.height) should] equal: theValue(calendarView.monthBar.height)];
-            [[theValue(calendarView.monthBackButton.width) should] equal: theValue(60)];
+            [[theValue(calendarView.monthBackButton.frame.origin.x) should] beZero];
+            [[theValue(calendarView.monthBackButton.frame.origin.y) should] beZero];
+            [[theValue(calendarView.monthBackButton.bounds.size.height) should] equal: theValue(calendarView.monthBar.bounds.size.height)];
+            [[theValue(calendarView.monthBackButton.bounds.size.width) should] equal: theValue(60)];
 
-            [[theValue(calendarView.monthForwardButton.left) should] equal: theValue(calendarView.monthBar.width - 60)];
-            [[theValue(calendarView.monthForwardButton.top) should] beZero];
-            [[theValue(calendarView.monthForwardButton.height) should] equal: theValue(calendarView.monthBar.height)];
-            [[theValue(calendarView.monthForwardButton.width) should] equal: theValue(60)];
+            [[theValue(calendarView.monthForwardButton.frame.origin.x) should] equal: theValue(calendarView.monthBar.bounds.size.width - 60)];
+            [[theValue(calendarView.monthForwardButton.frame.origin.y) should] beZero];
+            [[theValue(calendarView.monthForwardButton.bounds.size.height) should] equal: theValue(calendarView.monthBar.bounds.size.height)];
+            [[theValue(calendarView.monthForwardButton.bounds.size.width) should] equal: theValue(60)];
         });
 
         it(@"should have a grid view", ^{
@@ -133,8 +135,8 @@ describe(@"CalendarView", ^{
 
         it(@"should have cells sized appropriately", ^{
             for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
-                [[theValue(cell.width) should] equal: calendarView.gridView.width / 7.0 withDelta: 1.0];
-                [[theValue(cell.height) should] equal: calendarView.gridView.height / 6.0 withDelta: 1.0];
+                [[theValue(cell.bounds.size.width) should] equal: calendarView.gridView.bounds.size.width / 7.0 withDelta: 1.0];
+                [[theValue(cell.bounds.size.height) should] equal: calendarView.gridView.bounds.size.height / 6.0 withDelta: 1.0];
             }
         });
 
@@ -156,41 +158,6 @@ describe(@"CalendarView", ^{
             [[theValue(newMonth) should] equal: theValue(oldMonth - 1)];
         });*/
     });
-
-    /*context(@"when stylesheet is set", ^{
-        beforeEach(^{
-            [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
-
-            [calendarView layoutSubviews];
-        });
-
-        it(@"should style month bar appropriately", ^{
-            [calendarView.monthBar.style shouldNotBeNil];
-            [[calendarView.monthBar.style should] equal: TTSTYLE(calendarMonthBarStyle)];
-        });
-
-        it(@"should style month label appropriately", ^{
-            [calendarView.monthLabel.style shouldNotBeNil];
-            [[calendarView.monthLabel.backgroundColor should] equal: [UIColor clearColor]];
-            [[calendarView.monthLabel.style should] equal: TTSTYLE(calendarMonthLabelStyle)];
-        });
-
-        it(@"should style month navigation buttons", ^{
-            [[[calendarView.monthBackButton styleForState: UIControlStateNormal] should] equal:
-             [TTSTYLESHEET styleWithSelector: @"calendarMonthBackButton:" forState: UIControlStateNormal]];
-
-            [[[calendarView.monthForwardButton styleForState: UIControlStateNormal] should] equal:
-             [TTSTYLESHEET styleWithSelector: @"calendarMonthForwardButton:" forState: UIControlStateNormal]];
-        });
-
-        it(@"should have cells styled appropriately", ^{
-            for (CXCalendarCellView *cell in calendarView.gridView.subviews) {
-                [[cell styleForState: UIControlStateNormal] shouldNotBeNil];
-                [[[cell styleForState: UIControlStateNormal] should] equal:
-                 [TTSTYLESHEET styleWithSelector: @"calendarCellStyle:" forState: UIControlStateNormal]];
-            }
-        });
-    });*/
 });
 
 SPEC_END

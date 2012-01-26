@@ -10,6 +10,8 @@
 
 #import "CXCalendarCellView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 
 static const CGFloat kGridMargin = 4;
 
@@ -171,29 +173,24 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     CGFloat top = 0;
 
     if (self.monthBarHeight) {
-        self.monthBar.frame = CGRectMake(0, top, self.width, self.monthBarHeight);
-        self.monthLabel.frame = CGRectMake(0, top, self.width, self.monthBar.height);
-        self.monthForwardButton.frame = CGRectMake(self.monthBar.width - kDefaultMonthBarButtonWidth, top,
-                                                   kDefaultMonthBarButtonWidth, self.monthBar.height);
-        self.monthBackButton.frame = CGRectMake(0, top, kDefaultMonthBarButtonWidth, self.monthBar.height);
-        top = self.monthBar.top + self.monthBar.height;
+        self.monthBar.frame = CGRectMake(0, top, self.bounds.size.width, self.monthBarHeight);
+        self.monthLabel.frame = CGRectMake(0, top, self.bounds.size.width, self.monthBar.bounds.size.height);
+        self.monthForwardButton.frame = CGRectMake(self.monthBar.bounds.size.width - kDefaultMonthBarButtonWidth, top,
+                                                   kDefaultMonthBarButtonWidth, self.monthBar.bounds.size.height);
+        self.monthBackButton.frame = CGRectMake(0, top, kDefaultMonthBarButtonWidth, self.monthBar.bounds.size.height);
+        top = self.monthBar.frame.origin.y + self.monthBar.frame.size.height;
     } else {
         self.monthBar.frame = CGRectZero;
     }
 
     if (self.weekBarHeight) {
-        self.weekdayBar.left = 0;
-        self.weekdayBar.top = top;
-        self.weekdayBar.width = self.width;
-        self.weekdayBar.height = self.weekBarHeight;
+        self.weekdayBar.frame = CGRectMake(0, top, self.bounds.size.width, self.weekBarHeight);
         for (NSUInteger i = 0; i < [self.weekdayNameLabels count]; ++i) {
-            TTLabel *label = [self.weekdayNameLabels objectAtIndex:i];
-            label.left = (self.weekdayBar.width / 7) * (i % 7);
-            label.top = 0;
-            label.width = (self.weekdayBar.width / 7);
-            label.height = self.weekdayBar.height;
+            UILabel *label = [self.weekdayNameLabels objectAtIndex:i];
+            label.frame = CGRectMake((self.weekdayBar.bounds.size.width / 7) * (i % 7), 0,
+                                     self.weekdayBar.bounds.size.width / 7, self.weekdayBar.bounds.size.height);
         }
-        top = self.weekdayBar.top + self.weekdayBar.height;
+        top = self.weekdayBar.frame.origin.y + self.weekdayBar.frame.size.height;
     } else {
         self.weekdayBar.frame = CGRectZero;
     }
@@ -210,33 +207,36 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     NSRange range = [self.calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit
                                        forDate:self.displayedDate];
 
-    self.gridView.frame = CGRectMake(kGridMargin, top, self.width - kGridMargin * 2, self.height - top);
-    CGFloat cellHeight = self.gridView.height / 6.0;
+    self.gridView.frame = CGRectMake(kGridMargin, top,
+                                     self.bounds.size.width - kGridMargin * 2,
+                                     self.bounds.size.height - top);
+    CGFloat cellHeight = self.gridView.bounds.size.height / 6.0;
+    CGFloat cellWidth = (self.bounds.size.width - kGridMargin * 2) / 7.0;
     for (NSUInteger i = 0; i < [self.dayCells count]; ++i) {
         CXCalendarCellView *cellView = [self.dayCells objectAtIndex:i];
-        cellView.width = (self.width - kGridMargin * 2) / 7.0;
-        cellView.height = cellHeight;
-        cellView.left = cellView.width * ((shift + i) % 7);
-        cellView.top = cellHeight * ((shift + i) / 7);
+        cellView.frame = CGRectMake(cellWidth * ((shift + i) % 7), cellHeight * ((shift + i) / 7),
+                                    cellWidth, cellHeight);
         cellView.hidden = i >= range.length;
         cellView.selected = [[cellView dateWithBaseDate:self.displayedDate withCalendar:self.calendar] isEqualToDate:self.selectedDate];
     }
 }
 
-- (TTView *) monthBar {
+- (UIView *) monthBar {
     if (!_monthBar) {
-        _monthBar = [[[TTView alloc] init] autorelease];
-        _monthBar.style = TTSTYLE(calendarMonthBarStyle);
+        _monthBar = [[[UIView alloc] init] autorelease];
+        _monthBar.backgroundColor = [UIColor blueColor];
         _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview: _monthBar];
     }
     return _monthBar;
 }
 
-- (TTLabel *) monthLabel {
+- (UILabel *) monthLabel {
     if (!_monthLabel) {
-        _monthLabel = [[[TTLabel alloc] init] autorelease];
-        _monthLabel.style = TTSTYLE(calendarMonthLabelStyle);
+        _monthLabel = [[[UILabel alloc] init] autorelease];
+        _monthLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
+        _monthLabel.textColor = [UIColor whiteColor];
+        _monthLabel.textAlignment = UITextAlignmentCenter;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.backgroundColor = [UIColor clearColor];
         [self.monthBar addSubview: _monthLabel];
@@ -244,9 +244,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _monthLabel;
 }
 
-- (TTButton *) monthBackButton {
+- (UIButton *) monthBackButton {
     if (!_monthBackButton) {
-        _monthBackButton = [TTButton buttonWithStyle: @"calendarMonthBackButton:" title: @"<"];
+        _monthBackButton = [[[UIButton alloc] init] autorelease];
+        [_monthBackButton setTitle: @"<" forState:UIControlStateNormal];
+        _monthBackButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
+        _monthBackButton.titleLabel.textColor = [UIColor whiteColor];
         [_monthBackButton addTarget: self
                              action: @selector(monthBack)
                    forControlEvents: UIControlEventTouchUpInside];
@@ -255,9 +258,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _monthBackButton;
 }
 
-- (TTButton *) monthForwardButton {
+- (UIButton *) monthForwardButton {
     if (!_monthForwardButton) {
-        _monthForwardButton = [TTButton buttonWithStyle: @"calendarMonthForwardButton:" title: @">"];
+        _monthForwardButton = [[[UIButton alloc] init] autorelease];
+        [_monthForwardButton setTitle: @">" forState:UIControlStateNormal];
+        _monthForwardButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
+        _monthForwardButton.titleLabel.textColor = [UIColor whiteColor];
         [_monthForwardButton addTarget: self
                                 action: @selector(monthForward)
                       forControlEvents: UIControlEventTouchUpInside];
@@ -266,10 +272,9 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _monthForwardButton;
 }
 
-- (TTView *) weekdayBar {
+- (UIView *) weekdayBar {
     if (!_weekdayBar) {
-        _weekdayBar = [[[TTView alloc] init] autorelease];
-        _weekdayBar.style = TTSTYLE(calendarWeekdayBarStyle);
+        _weekdayBar = [[[UIView alloc] init] autorelease];
         _weekdayBar.backgroundColor = [UIColor clearColor];
     }
     return _weekdayBar;
@@ -282,10 +287,10 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         dateFromatter.calendar = self.calendar;
         for (NSUInteger i = self.calendar.firstWeekday; i < self.calendar.firstWeekday + 7; ++i) {
             NSUInteger index = (i - 1) < 7 ? (i - 1) : ((i - 1) - 7);
-            TTLabel *label = [[TTLabel alloc] initWithFrame: CGRectZero];
+            UILabel *label = [[UILabel alloc] initWithFrame: CGRectZero];
             label.tag = i;
-            label.style = TTSTYLE(calendarWeekdayLabelStyle);
-            label.backgroundColor = [UIColor whiteColor];
+            label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            label.textAlignment = UITextAlignmentCenter;
             NSString *weekdayName = [[dateFromatter shortWeekdaySymbols] objectAtIndex: index];
             label.text = NSLocalizedString(weekdayName, @"");
             [labels addObject:label];
@@ -297,10 +302,10 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _weekdayNameLabels;
 }
 
-- (TTView *) gridView {
+- (UIView *) gridView {
     if (!_gridView) {
-        _gridView = [[[TTView alloc] init] autorelease];
-        _gridView.style = TTSTYLE(calendarGridViewStyle);
+        _gridView = [[[UIView alloc] init] autorelease];
+        _gridView.backgroundColor = [UIColor clearColor];
         _gridView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview: _gridView];
     }
@@ -312,6 +317,9 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         NSMutableArray *cells = [NSMutableArray array];
         for (NSUInteger i = 1; i <= 31; ++i) {
             CXCalendarCellView *cell = [[CXCalendarCellView new] autorelease];
+            cell.backgroundColor = [UIColor clearColor];
+            [cell setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [cell setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
             cell.tag = i;
             cell.day = i;
             [cell addTarget: self
