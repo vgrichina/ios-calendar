@@ -16,8 +16,15 @@
 
 @optional
 
+- (BOOL) calendarView: (CXCalendarView *) calendarView
+       willSelectDate: (NSDate *) date;
+
 - (void) calendarView: (CXCalendarView *) calendarView
         didSelectDate: (NSDate *) selectedDate;
+
+- (void) calendarView: (CXCalendarView *) calendarView
+ displayedDateChanged: (NSUInteger) displayedMonth
+                 year: (NSUInteger) displayedYear;
 
 @end
 

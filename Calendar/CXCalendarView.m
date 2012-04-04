@@ -64,6 +64,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
 - (void) setSelectedDate: (NSDate *) selectedDate {
     if (![selectedDate isEqual: _selectedDate]) {
+        if ([self.delegate respondsToSelector:@selector(calendarView:willSelectDate:)]) {
+            if (![self.delegate calendarView:self willSelectDate:selectedDate]) {
+                return;
+            }
+        }
         [_selectedDate release];
         _selectedDate = [selectedDate retain];
 
@@ -87,6 +92,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (_displayedDate != displayedDate) {
         [_displayedDate release];
         _displayedDate = [displayedDate retain];
+
+        if ([self.delegate respondsToSelector:@selector(calendarView:displayedDateChanged:year:)]) {
+            [self.delegate calendarView:self
+                   displayedDateChanged:self.displayedMonth
+                                   year:self.displayedYear];
+        }
 
         NSString *monthName = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: self.displayedMonth - 1];
         self.monthLabel.text = [NSString stringWithFormat: @"%@ %d", NSLocalizedString(monthName, @""), self.displayedYear];
@@ -158,7 +169,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date {
     NSDateComponents *components = [self.calendar components: NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
-                                                        fromDate: date];
+                                                    fromDate: date];
     if (components.month == self.displayedMonth &&
         components.year == self.displayedYear &&
         [self.dayCells count] >= components.day) {
