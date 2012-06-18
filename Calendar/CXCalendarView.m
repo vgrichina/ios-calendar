@@ -223,7 +223,21 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         cellView.frame = CGRectMake(cellWidth * ((shift + i) % 7), cellHeight * ((shift + i) / 7),
                                     cellWidth, cellHeight);
         cellView.hidden = i >= range.length;
-        cellView.selected = [[cellView dateWithBaseDate:self.displayedDate withCalendar:self.calendar] isEqualToDate:self.selectedDate];
+
+        NSDate *cellDate = [cellView dateWithBaseDate:self.displayedDate withCalendar:self.calendar];
+        NSDateComponents *cellDateComponents = [self.calendar components:
+                                                NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                                fromDate: cellDate];
+        NSDateComponents *selectedDateComponents = [self.calendar components:
+                                                    NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                                                    fromDate: self.selectedDate];
+        if (cellDateComponents.year == selectedDateComponents.year &&
+            cellDateComponents.month == selectedDateComponents.month &&
+            cellDateComponents.day == selectedDateComponents.day) {
+            cellView.selected = YES;
+        } else {
+            cellView.selected = NO;
+        }
     }
 }
 
