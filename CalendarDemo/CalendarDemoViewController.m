@@ -8,8 +8,6 @@
 
 #import "CalendarDemoViewController.h"
 
-#import <Three20UICommon/Three20UICommon+Additions.h>
-
 @implementation CalendarDemoViewController
 
 @synthesize calendarView;

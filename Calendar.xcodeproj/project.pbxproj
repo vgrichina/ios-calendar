@@ -1149,6 +1149,7 @@
 				GCC_PREFIX_HEADER = "Calendar/Calendar-Prefix.pch";
 				INFOPLIST_FILE = "CalendarTests/CalendarTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1164,6 +1165,7 @@
 				GCC_PREFIX_HEADER = "Calendar/Calendar-Prefix.pch";
 				INFOPLIST_FILE = "CalendarTests/CalendarTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_AFTER_BUILD = YES;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
