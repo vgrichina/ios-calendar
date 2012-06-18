@@ -95,27 +95,17 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
         if ([self.delegate respondsToSelector:@selector(calendarView:displayedDateChanged:year:)]) {
             [self.delegate calendarView:self
-                   displayedDateChanged:self.displayedMonth
-                                   year:self.displayedYear];
+                 didChangeDisplayedDate:self.displayedDate];
         }
 
-        NSString *monthName = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: self.displayedMonth - 1];
-        self.monthLabel.text = [NSString stringWithFormat: @"%@ %d", NSLocalizedString(monthName, @""), self.displayedYear];
-
+        NSDateComponents *components = [self.calendar components: NSYearCalendarUnit | NSMonthCalendarUnit
+                                                        fromDate: self.displayedDate];
+        NSString *monthName = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols]
+                               objectAtIndex: components.month];
+        self.displayedDateLabel.text = [NSString stringWithFormat: @"%@ %d",
+                                NSLocalizedString(monthName, @""), components.year];
         [self setNeedsLayout];
     }
-}
-
-- (NSUInteger)displayedYear {
-    NSDateComponents *components = [self.calendar components: NSYearCalendarUnit
-                                                    fromDate: self.displayedDate];
-    return components.year;
-}
-
-- (NSUInteger)displayedMonth {
-    NSDateComponents *components = [self.calendar components: NSMonthCalendarUnit
-                                                    fromDate: self.displayedDate];
-    return components.month;
 }
 
 - (CGFloat) monthBarHeight {
@@ -168,10 +158,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 }
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date {
-    NSDateComponents *components = [self.calendar components: NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
+    NSDateComponents *components = [self.calendar components:
+                                    NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
                                                     fromDate: date];
-    if (components.month == self.displayedMonth &&
-        components.year == self.displayedYear &&
+    NSDateComponents *displayedDateComponents = [self.calendar components:
+                                                 NSYearCalendarUnit | NSMonthCalendarUnit
+                                                                 fromDate: self.displayedDate];
+
+    if (components.month == displayedDateComponents.month &&
+        components.year == displayedDateComponents.year &&
         [self.dayCells count] >= components.day) {
         return [self.dayCells objectAtIndex: components.day - 1];
     }
@@ -184,14 +179,14 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     CGFloat top = 0;
 
     if (self.monthBarHeight) {
-        self.monthBar.frame = CGRectMake(0, top, self.bounds.size.width, self.monthBarHeight);
-        self.monthLabel.frame = CGRectMake(0, top, self.bounds.size.width, self.monthBar.bounds.size.height);
-        self.monthForwardButton.frame = CGRectMake(self.monthBar.bounds.size.width - kDefaultMonthBarButtonWidth, top,
-                                                   kDefaultMonthBarButtonWidth, self.monthBar.bounds.size.height);
-        self.monthBackButton.frame = CGRectMake(0, top, kDefaultMonthBarButtonWidth, self.monthBar.bounds.size.height);
-        top = self.monthBar.frame.origin.y + self.monthBar.frame.size.height;
+        self.displayedDateBar.frame = CGRectMake(0, top, self.bounds.size.width, self.monthBarHeight);
+        self.displayedDateLabel.frame = CGRectMake(0, top, self.bounds.size.width, self.displayedDateBar.bounds.size.height);
+        self.monthForwardButton.frame = CGRectMake(self.displayedDateBar.bounds.size.width - kDefaultMonthBarButtonWidth, top,
+                                                   kDefaultMonthBarButtonWidth, self.displayedDateBar.bounds.size.height);
+        self.monthBackButton.frame = CGRectMake(0, top, kDefaultMonthBarButtonWidth, self.displayedDateBar.bounds.size.height);
+        top = self.displayedDateBar.frame.origin.y + self.displayedDateBar.frame.size.height;
     } else {
-        self.monthBar.frame = CGRectZero;
+        self.displayedDateBar.frame = CGRectZero;
     }
 
     if (self.weekBarHeight) {
@@ -232,27 +227,27 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     }
 }
 
-- (UIView *) monthBar {
-    if (!_monthBar) {
-        _monthBar = [[[UIView alloc] init] autorelease];
-        _monthBar.backgroundColor = [UIColor blueColor];
-        _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        [self addSubview: _monthBar];
+- (UIView *) displayedDateBar {
+    if (!_displayedDateBar) {
+        _displayedDateBar = [[[UIView alloc] init] autorelease];
+        _displayedDateBar.backgroundColor = [UIColor blueColor];
+        _displayedDateBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        [self addSubview: _displayedDateBar];
     }
-    return _monthBar;
+    return _displayedDateBar;
 }
 
-- (UILabel *) monthLabel {
-    if (!_monthLabel) {
-        _monthLabel = [[[UILabel alloc] init] autorelease];
-        _monthLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthLabel.textColor = [UIColor whiteColor];
-        _monthLabel.textAlignment = UITextAlignmentCenter;
-        _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
-        _monthLabel.backgroundColor = [UIColor clearColor];
-        [self.monthBar addSubview: _monthLabel];
+- (UILabel *) displayedDateLabel {
+    if (!_displayedDateLabel) {
+        _displayedDateLabel = [[[UILabel alloc] init] autorelease];
+        _displayedDateLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
+        _displayedDateLabel.textColor = [UIColor whiteColor];
+        _displayedDateLabel.textAlignment = UITextAlignmentCenter;
+        _displayedDateLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        _displayedDateLabel.backgroundColor = [UIColor clearColor];
+        [self.displayedDateBar addSubview: _displayedDateLabel];
     }
-    return _monthLabel;
+    return _displayedDateLabel;
 }
 
 - (UIButton *) monthBackButton {
@@ -264,7 +259,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         [_monthBackButton addTarget: self
                              action: @selector(monthBack)
                    forControlEvents: UIControlEventTouchUpInside];
-        [self.monthBar addSubview: _monthBackButton];
+        [self.displayedDateBar addSubview: _monthBackButton];
     }
     return _monthBackButton;
 }
@@ -278,7 +273,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         [_monthForwardButton addTarget: self
                                 action: @selector(monthForward)
                       forControlEvents: UIControlEventTouchUpInside];
-        [self.monthBar addSubview: _monthForwardButton];
+        [self.displayedDateBar addSubview: _monthForwardButton];
     }
     return _monthForwardButton;
 }

@@ -12,6 +12,4 @@
 
 @interface CalendarDemoViewController : UIViewController<CXCalendarViewDelegate>
 
-@property(assign) CXCalendarView *calendarView;
-
 @end

@@ -10,21 +10,18 @@
 
 @implementation CalendarDemoViewController
 
-@synthesize calendarView;
-
 - (void) loadView {
     [super loadView];
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.calendarView = [[[CXCalendarView alloc] initWithFrame: self.view.bounds] autorelease];
-    [self.view addSubview: self.calendarView];
-    self.calendarView.frame = self.view.bounds;
-    self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    CXCalendarView *calendarView = [[[CXCalendarView alloc] initWithFrame: self.view.bounds] autorelease];
+    calendarView.frame = self.view.bounds;
+    calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    calendarView.selectedDate = [NSDate date];
+    calendarView.delegate = self;
 
-    self.calendarView.selectedDate = [NSDate date];
-
-    self.calendarView.delegate = self;
+    [self.view addSubview: calendarView];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
@@ -35,9 +32,14 @@
 
 - (void) calendarView: (CXCalendarView *) calendarView
         didSelectDate: (NSDate *) date {
-
     NSLog(@"Selected date: %@", date);
-    /*TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);*/
+}
+
+- (void)  calendarView: (CXCalendarView *) calendarView
+didChangeDisplayedDate: (NSDate *) displayedDate {
+    NSDateComponents *components = [calendarView.calendar components: NSYearCalendarUnit | NSMonthCalendarUnit
+                                                            fromDate: displayedDate];
+    NSLog(@"Displayed date: %d.%d", components.month, components.year);
 }
 
 @end
