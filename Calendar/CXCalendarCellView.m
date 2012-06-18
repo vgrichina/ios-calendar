@@ -22,10 +22,11 @@
 }
 
 - (NSDate *) dateWithBaseDate: (NSDate *) baseDate withCalendar: (NSCalendar *)calendar {
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit
-                                               fromDate:baseDate];
+    NSDateComponents *components = [calendar components:
+                                    NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
+                                               fromDate: baseDate];
     components.day = self.day;
-    return [calendar dateFromComponents:components];
+    return [calendar dateFromComponents: components];
 }
 
 @end

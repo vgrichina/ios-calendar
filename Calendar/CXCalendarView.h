@@ -16,8 +16,14 @@
 
 @optional
 
+- (BOOL) calendarView: (CXCalendarView *) calendarView
+       willSelectDate: (NSDate *) date;
+
 - (void) calendarView: (CXCalendarView *) calendarView
         didSelectDate: (NSDate *) selectedDate;
+
+- (void)  calendarView: (CXCalendarView *) calendarView
+didChangeDisplayedDate: (NSDate *) displayedDate;
 
 @end
 
@@ -30,12 +36,14 @@
 
     NSDate *_displayedDate;
 
-    UIView *_monthBar;
-    UILabel *_monthLabel;
+    UIView *_displayedDateBar;
+    UILabel *_displayedDateLabel;
     UIButton *_monthBackButton;
     UIButton *_monthForwardButton;
+
     UIView *_weekdayBar;
     NSArray *_weekdayNameLabels;
+
     UIView *_gridView;
     NSArray *_dayCells;
 
@@ -50,8 +58,6 @@
 @property(nonatomic, retain) NSDate *selectedDate;
 
 @property(nonatomic, retain) NSDate *displayedDate;
-@property(nonatomic, readonly) NSUInteger displayedYear;
-@property(nonatomic, readonly) NSUInteger displayedMonth;
 
 - (void) monthForward;
 - (void) monthBack;
@@ -59,8 +65,8 @@
 - (void) reset;
 
 // UI
-@property(readonly) UIView *monthBar;
-@property(readonly) UILabel *monthLabel;
+@property(readonly) UIView *displayedDateBar;
+@property(readonly) UILabel *displayedDateLabel;
 @property(readonly) UIButton *monthBackButton;
 @property(readonly) UIButton *monthForwardButton;
 @property(readonly) UIView *weekdayBar;

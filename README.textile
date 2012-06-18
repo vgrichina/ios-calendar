@@ -3,10 +3,8 @@ h2. Introduction
 ios-calendar is a stylable month calendar view for use in iPhone applications.
 
 It has two branches:
+* @master@ allows you customize it without using Three20.
 * @three20@ uses "Three20 framework":http://three20.info for styling
-* @master@ allows you customize it without using Three20. It uses "Nimbus":http://nimbuskit.info/, so it's good idea to use Nimbus CSS for styling.
-
-Note that README right now is a bit out of date and applies mostly to @three20@ branch, however the demo and tests are up-to-date.
 
 While there are existing implementations ("Kal":https://github.com/klazuka/Kal and @TKCalendarMonthView@ from "Tapku Library":https://github.com/devinross/tapkulibrary, they are quite limited. In particular they both replicate styling and functionality of iPhone Calendar app and there is basically no easy way to adjust them. In addition to this – only portrait view is supported in them.
 
@@ -16,34 +14,36 @@ ios-calenar was developed to solve aforementioned problems. It's default design 
 
 h2. Project setup
 
+For @master@ branch:
+You can use project as dependency or just drop source code into your project.
+Important: Calendar don't uses ARC.
+
+For @three20@ branch:
 While not elegant at all, currently the best method to add ios-calendar to your project is just to drop its source code in it (from "Calendar" group).
 It is possible to use it as dependency, but only when your project doesn't itself use Three20. Otherwise build results in XCode crash. I'm looking for suggestions on how better to resolve this issue.
 
 h2. Usage sample
 
-XCode project on GitHub contains sample target - CalendarDemo. Here are main highlights:
+XCode project on GitHub contains sample target - CalendarDemo.
 
 h3. CalendarDemoViewController.m
 
 <pre><code>#import "CalendarDemoViewController.h"
 
-#import <Three20UICommon/Three20UICommon+Additions.h>
-
 @implementation CalendarDemoViewController
-
-@synthesize calendarView;
 
 - (void) loadView {
     [super loadView];
 
-    self.calendarView = [[CXCalendarView new] autorelease];
-    [self.view addSubview: self.calendarView];
-    self.calendarView.frame = self.view.bounds;
-    self.calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view.backgroundColor = [UIColor whiteColor];
 
-    self.calendarView.selectedDate = [NSDate date];
+    CXCalendarView *calendarView = [[[CXCalendarView alloc] initWithFrame: self.view.bounds] autorelease];
+    calendarView.frame = self.view.bounds;
+    calendarView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    calendarView.selectedDate = [NSDate date];
+    calendarView.delegate = self;
 
-    self.calendarView.delegate = self;
+    [self.view addSubview: calendarView];
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
@@ -54,104 +54,17 @@ h3. CalendarDemoViewController.m
 
 - (void) calendarView: (CXCalendarView *) calendarView
         didSelectDate: (NSDate *) date {
-
     NSLog(@"Selected date: %@", date);
-    TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);
+}
+
+- (void)  calendarView: (CXCalendarView *) calendarView
+didChangeDisplayedDate: (NSDate *) displayedDate {
+    NSDateComponents *components = [calendarView.calendar components: NSYearCalendarUnit | NSMonthCalendarUnit
+                                                            fromDate: displayedDate];
+    NSLog(@"Displayed date: %d.%d", components.month, components.year);
 }
 
 @end</code></pre>
-
-
-h3. CalendarDemoAppDelegate.m
-
-There is one very important thing to do in app delegate – set up Three20 styling. There is sample stylesheet (inspired by MoMA) – @TestStyleSheet@.
-
-<pre><code>#import "CalendarDemoAppDelegate.h"
-
-#import "TestStyleSheet.h"
-#import "CalendarDemoViewController.h"
-
-@implementation CalendarDemoAppDelegate
-
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
-- (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
-    [TTStyleSheet setGlobalStyleSheet: [[TestStyleSheet new] autorelease]];
-
-    // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.viewController = [[CalendarDemoViewController alloc] init];
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
-    return YES;
-}
-
-@end</code></pre>
-
-h3. Styling
-
-Here's default stylesheet for you to study:
-
-<pre><code>#import "TestStyleSheet.h"
-
-@implementation TestStyleSheet
-
-- (TTStyle *) calendarCellStyle: (UIControlState) state {
-    if (state & UIControlStateDisabled) {
-        return [TTTextStyle styleWithColor: [UIColor clearColor] next: nil];
-    }
-
-    if (state & UIControlStateSelected) {
-        return [TTSolidFillStyle styleWithColor: [UIColor grayColor] next:
-                [TTTextStyle styleWithColor: [UIColor whiteColor] next: nil]];
-    }
-
-    return [TTTextStyle styleWithColor: [UIColor grayColor] next: nil];
-}
-
-- (TTStyle *) calendarMonthBarStyle {
-    return
-    [TTLinearGradientFillStyle styleWithColor1: RGBCOLOR(188, 200, 215)
-                                        color2: RGBCOLOR(125, 150, 179) next:
-     [TTFourBorderStyle styleWithTop: RGBCOLOR(213, 221, 230)
-                               right: nil
-                              bottom: RGBCOLOR(57, 70, 84)
-                                left: nil
-                               width: 1 next: nil]];
-
-}
-
-- (TTStyle *) calendarMonthBackButton: (UIControlState) state {
-    return
-    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
-                         color: [UIColor whiteColor]
-                   shadowColor: [UIColor grayColor]
-                  shadowOffset: CGSizeMake(0, 1) next: nil];
-}
-
-- (TTStyle *) calendarMonthForwardButton: (UIControlState) state {
-    return
-    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
-                         color: [UIColor whiteColor]
-                   shadowColor: [UIColor grayColor]
-                  shadowOffset: CGSizeMake(0, 1) next: nil];
-}
-
-- (TTStyle *) calendarMonthLabelStyle {
-    return
-    [TTTextStyle styleWithFont: [UIFont systemFontOfSize: [UIFont buttonFontSize]]
-                         color: [UIColor whiteColor]
-                   shadowColor: [UIColor grayColor]
-                  shadowOffset: CGSizeMake(0, 1) next: nil];
-}
-
-- (TTStyle *) calendarGridViewStyle {
-    return [TTSolidFillStyle styleWithColor: [UIColor whiteColor] next: nil];
-}
-
-@end</code></pre>
-
 
 h2. License
 
