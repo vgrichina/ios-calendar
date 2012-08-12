@@ -31,7 +31,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
         _monthBarHeight = 48;
         _weekBarHeight = 32;
+
+        _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
+        _calendar = [[NSCalendar currentCalendar] retain];
     }
+
     return self;
 }
 
@@ -39,14 +44,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     [_calendar release];
     [_selectedDate release];
     [_displayedDate release];
+    [_dateFormatter release];
 
     [super dealloc];
 }
 
 - (NSCalendar *) calendar {
-    if (!_calendar) {
-        _calendar = [[NSCalendar currentCalendar] retain];
-    }
     return _calendar;
 }
 
@@ -54,6 +57,8 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (_calendar != calendar) {
         [_calendar release];
         _calendar = [calendar retain];
+        _dateFormatter.calendar = _calendar;
+
         [self setNeedsLayout];
     }
 }
@@ -88,20 +93,20 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         [_displayedDate release];
         _displayedDate = [displayedDate retain];
 
-        NSString *monthName = [[[[NSDateFormatter new] autorelease] standaloneMonthSymbols] objectAtIndex: self.displayedMonth - 1];
-        self.monthLabel.text = [NSString stringWithFormat: @"%@ %d", NSLocalizedString(monthName, @""), self.displayedYear];
+        NSString *monthName = [[_dateFormatter standaloneMonthSymbols] objectAtIndex: self.displayedMonth - 1];
+        self.monthLabel.text = [NSString stringWithFormat: @"%@ %d", monthName, self.displayedYear];
 
         [self setNeedsLayout];
     }
 }
 
-- (NSUInteger)displayedYear {
+- (NSUInteger) displayedYear {
     NSDateComponents *components = [self.calendar components: NSYearCalendarUnit
                                                     fromDate: self.displayedDate];
     return components.year;
 }
 
-- (NSUInteger)displayedMonth {
+- (NSUInteger) displayedMonth {
     NSDateComponents *components = [self.calendar components: NSMonthCalendarUnit
                                                     fromDate: self.displayedDate];
     return components.month;
@@ -283,19 +288,20 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (NSArray *) weekdayNameLabels {
     if (!_weekdayNameLabels) {
         NSMutableArray *labels = [NSMutableArray array];
-        NSDateFormatter *dateFromatter = [[[NSDateFormatter alloc] init] autorelease];
-        dateFromatter.calendar = self.calendar;
+
         for (NSUInteger i = self.calendar.firstWeekday; i < self.calendar.firstWeekday + 7; ++i) {
             NSUInteger index = (i - 1) < 7 ? (i - 1) : ((i - 1) - 7);
+
             UILabel *label = [[UILabel alloc] initWithFrame: CGRectZero];
             label.tag = i;
             label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
             label.textAlignment = UITextAlignmentCenter;
-            NSString *weekdayName = [[dateFromatter shortWeekdaySymbols] objectAtIndex: index];
-            label.text = NSLocalizedString(weekdayName, @"");
+            label.text = [[_dateFormatter shortWeekdaySymbols] objectAtIndex: index];
+
             [labels addObject:label];
             [_weekdayBar addSubview: label];
         }
+
         [self addSubview:_weekdayBar];
         _weekdayNameLabels = [[NSArray alloc] initWithArray:labels];
     }

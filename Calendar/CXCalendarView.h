@@ -41,6 +41,8 @@
 
     CGFloat _monthBarHeight;
     CGFloat _weekBarHeight;
+
+    NSDateFormatter *_dateFormatter;
 }
 
 @property(nonatomic, retain) NSCalendar *calendar;
