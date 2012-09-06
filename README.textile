@@ -14,6 +14,8 @@ ios-calenar was developed to solve aforementioned problems. It's default design 
 
 !http://www.componentix.com/blog_images/ios_calendar_demo.png!
 
+I maintain "a list of apps using ios-calendar":https://github.com/vgrichina/ios-calendar/wiki/Apps-using-ios-calendar, feel free to add your app to it.
+
 h2. Project setup
 
 While not elegant at all, currently the best method to add ios-calendar to your project is just to drop its source code in it (from "Calendar" group).
