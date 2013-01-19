@@ -67,16 +67,20 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return _selectedDate;
 }
 
+- (void) updateSelectedDate {
+    for (CXCalendarCellView *cellView in self.dayCells) {
+        cellView.selected = NO;
+    }
+
+    [self cellForDate: self.selectedDate].selected = YES;
+}
+
 - (void) setSelectedDate: (NSDate *) selectedDate {
     if (![selectedDate isEqual: _selectedDate]) {
         [_selectedDate release];
         _selectedDate = [selectedDate retain];
 
-        for (CXCalendarCellView *cellView in self.dayCells) {
-            cellView.selected = NO;
-        }
-
-        [[self cellForDate: selectedDate] setSelected: YES];
+        [self updateSelectedDate];
 
         if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
             [self.delegate calendarView: self didSelectDate: _selectedDate];
@@ -95,6 +99,8 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
         NSString *monthName = [[_dateFormatter standaloneMonthSymbols] objectAtIndex: self.displayedMonth - 1];
         self.monthLabel.text = [NSString stringWithFormat: @"%@ %d", monthName, self.displayedYear];
+
+        [self updateSelectedDate];
 
         [self setNeedsLayout];
     }
@@ -165,8 +171,9 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     NSDateComponents *components = [self.calendar components: NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
                                                         fromDate: date];
     if (components.month == self.displayedMonth &&
-        components.year == self.displayedYear &&
-        [self.dayCells count] >= components.day) {
+            components.year == self.displayedYear &&
+            [self.dayCells count] >= components.day) {
+
         return [self.dayCells objectAtIndex: components.day - 1];
     }
     return nil;
@@ -222,7 +229,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         cellView.frame = CGRectMake(cellWidth * ((shift + i) % 7), cellHeight * ((shift + i) / 7),
                                     cellWidth, cellHeight);
         cellView.hidden = i >= range.length;
-        cellView.selected = [[cellView dateWithBaseDate:self.displayedDate withCalendar:self.calendar] isEqualToDate:self.selectedDate];
     }
 }
 
