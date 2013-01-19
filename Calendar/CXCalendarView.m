@@ -26,15 +26,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if ((self = [super initWithFrame: frame])) {
         self.backgroundColor = [UIColor clearColor];
 
-        self.selectedDate = nil;
-        self.displayedDate = [NSDate date];
+        _dateFormatter = [NSDateFormatter new];
+        _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
+        _calendar = [[NSCalendar currentCalendar] retain];
 
         _monthBarHeight = 48;
         _weekBarHeight = 32;
 
-        _dateFormatter = [NSDateFormatter new];
-        _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
-        _calendar = [[NSCalendar currentCalendar] retain];
+        self.selectedDate = nil;
+        self.displayedDate = [NSDate date];
     }
 
     return self;
