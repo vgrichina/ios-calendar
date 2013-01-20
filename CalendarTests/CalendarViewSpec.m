@@ -140,7 +140,7 @@ describe(@"CalendarView", ^{
             }
         });
 
-        /*it(@"should advance to next month when forward button is pressed", ^{
+        it(@"should advance to next month when forward button is pressed", ^{
             int oldMonth = [calendarView.calendar components: NSMonthCalendarUnit
                                                     fromDate: calendarView.displayedDate].month;
             [calendarView.monthForwardButton sendActionsForControlEvents: UIControlEventTouchUpInside];
@@ -156,7 +156,7 @@ describe(@"CalendarView", ^{
             int newMonth = [calendarView.calendar components: NSMonthCalendarUnit
                                                     fromDate: calendarView.displayedDate].month;
             [[theValue(newMonth) should] equal: theValue(oldMonth - 1)];
-        });*/
+        });
     });
 });
 
