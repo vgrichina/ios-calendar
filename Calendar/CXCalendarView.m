@@ -302,7 +302,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         for (NSUInteger i = self.calendar.firstWeekday; i < self.calendar.firstWeekday + 7; ++i) {
             NSUInteger index = (i - 1) < 7 ? (i - 1) : ((i - 1) - 7);
 
-            UILabel *label = [[UILabel alloc] initWithFrame: CGRectZero];
+            UILabel *label = [[[UILabel alloc] initWithFrame: CGRectZero] autorelease];
             label.tag = i;
             label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
             label.textAlignment = UITextAlignmentCenter;
