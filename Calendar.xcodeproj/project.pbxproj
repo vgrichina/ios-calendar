@@ -114,6 +114,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D50E218B16AB73AF009C59E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5B46D0713CE22CD0079A9C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D54D977013D643A800B2C5C8;
+			remoteInfo = CalendarDemo;
+		};
 		D545C74F13DDFF4E008283F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D5B46D0713CE22CD0079A9C2 /* Project object */;
@@ -703,6 +710,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D50E218C16AB73AF009C59E3 /* PBXTargetDependency */,
 				D5B46D2613CE22CD0079A9C2 /* PBXTargetDependency */,
 			);
 			name = CalendarTests;
@@ -883,6 +891,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D50E218C16AB73AF009C59E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D54D977013D643A800B2C5C8 /* CalendarDemo */;
+			targetProxy = D50E218B16AB73AF009C59E3 /* PBXContainerItemProxy */;
+		};
 		D545C75013DDFF4E008283F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D5B46D0F13CE22CD0079A9C2 /* Calendar */;
