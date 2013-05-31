@@ -47,7 +47,7 @@
 
 @property(nonatomic, retain) NSCalendar *calendar;
 
-@property(nonatomic, assign) id<CXCalendarViewDelegate> delegate;
+@property(nonatomic, assign) IBOutlet id<CXCalendarViewDelegate> delegate;
 
 @property(nonatomic, retain) NSDate *selectedDate;
 

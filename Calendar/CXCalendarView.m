@@ -12,32 +12,39 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-
 static const CGFloat kGridMargin = 4;
-
+static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
 @implementation CXCalendarView
 
 @synthesize delegate;
 
-static const CGFloat kDefaultMonthBarButtonWidth = 60;
-
 - (id) initWithFrame: (CGRect) frame {
     if ((self = [super initWithFrame: frame])) {
-        self.backgroundColor = [UIColor clearColor];
-
-        _dateFormatter = [NSDateFormatter new];
-        _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
-        _calendar = [[NSCalendar currentCalendar] retain];
-
-        _monthBarHeight = 48;
-        _weekBarHeight = 32;
-
-        self.selectedDate = nil;
-        self.displayedDate = [NSDate date];
+        [self setDefaults];
     }
 
     return self;
+}
+
+- (void) awakeFromNib
+{
+    [super awakeFromNib];
+    [self setDefaults];
+}
+
+- (void) setDefaults {
+    self.backgroundColor = [UIColor clearColor];
+
+    _dateFormatter = [NSDateFormatter new];
+    _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
+    _calendar = [[NSCalendar currentCalendar] retain];
+
+    _monthBarHeight = 48;
+    _weekBarHeight = 32;
+
+    self.selectedDate = nil;
+    self.displayedDate = [NSDate date];
 }
 
 - (void) dealloc {
