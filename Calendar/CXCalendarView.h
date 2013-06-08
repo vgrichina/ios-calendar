@@ -75,4 +75,13 @@
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date;
 
+
+// Appearance
+// TODO: UIAppearance support
+@property(nonatomic, retain) UIColor *monthBarBackgroundColor;
+@property(nonatomic, retain) UIColor *monthLabelColor;
+@property(nonatomic, retain) UIColor *cellLabelNormalColor;
+@property(nonatomic, retain) UIColor *cellLabelSelectedColor;
+
+
 @end

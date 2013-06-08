@@ -36,6 +36,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (void) setDefaults {
     self.backgroundColor = [UIColor clearColor];
 
+    self.monthBarBackgroundColor = [UIColor blueColor];
+    self.monthLabelColor = [UIColor whiteColor];
+    self.cellLabelNormalColor = [UIColor blackColor];
+    self.cellLabelSelectedColor = [UIColor redColor];
+
     _dateFormatter = [NSDateFormatter new];
     _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
     _calendar = [[NSCalendar currentCalendar] retain];
@@ -246,7 +251,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (UIView *) monthBar {
     if (!_monthBar) {
         _monthBar = [[[UIView alloc] init] autorelease];
-        _monthBar.backgroundColor = [UIColor blueColor];
+        _monthBar.backgroundColor = self.monthBarBackgroundColor;
         _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview: _monthBar];
     }
@@ -257,7 +262,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (!_monthLabel) {
         _monthLabel = [[[UILabel alloc] init] autorelease];
         _monthLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthLabel.textColor = [UIColor whiteColor];
+        _monthLabel.textColor = self.monthLabelColor;
         _monthLabel.textAlignment = UITextAlignmentCenter;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.backgroundColor = [UIColor clearColor];
@@ -271,7 +276,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         _monthBackButton = [[[UIButton alloc] init] autorelease];
         [_monthBackButton setTitle: @"<" forState:UIControlStateNormal];
         _monthBackButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthBackButton.titleLabel.textColor = [UIColor whiteColor];
+        _monthBackButton.titleLabel.textColor = self.monthLabelColor;
         [_monthBackButton addTarget: self
                              action: @selector(monthBack)
                    forControlEvents: UIControlEventTouchUpInside];
@@ -285,7 +290,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         _monthForwardButton = [[[UIButton alloc] init] autorelease];
         [_monthForwardButton setTitle: @">" forState:UIControlStateNormal];
         _monthForwardButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthForwardButton.titleLabel.textColor = [UIColor whiteColor];
+        _monthForwardButton.titleLabel.textColor = self.monthLabelColor;
         [_monthForwardButton addTarget: self
                                 action: @selector(monthForward)
                       forControlEvents: UIControlEventTouchUpInside];
@@ -341,8 +346,8 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         for (NSUInteger i = 1; i <= 31; ++i) {
             CXCalendarCellView *cell = [[CXCalendarCellView new] autorelease];
             cell.backgroundColor = [UIColor clearColor];
-            [cell setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [cell setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+            [cell setTitleColor:self.cellLabelNormalColor forState:UIControlStateNormal];
+            [cell setTitleColor:self.cellLabelSelectedColor forState:UIControlStateSelected];
             cell.tag = i;
             cell.day = i;
             [cell addTarget: self
