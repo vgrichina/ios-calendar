@@ -219,10 +219,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
     if (self.weekBarHeight) {
         self.weekdayBar.frame = CGRectMake(0, top, self.bounds.size.width, self.weekBarHeight);
+        CGRect contentRect = CGRectInset(self.weekdayBar.bounds, kGridMargin, 0);
         for (NSUInteger i = 0; i < [self.weekdayNameLabels count]; ++i) {
             UILabel *label = [self.weekdayNameLabels objectAtIndex:i];
-            label.frame = CGRectMake((self.weekdayBar.bounds.size.width / 7) * (i % 7), 0,
-                                     self.weekdayBar.bounds.size.width / 7, self.weekdayBar.bounds.size.height);
+            label.frame = CGRectMake((contentRect.size.width / 7) * (i % 7), 0,
+                                     contentRect.size.width / 7, contentRect.size.height);
         }
         top = self.weekdayBar.frame.origin.y + self.weekdayBar.frame.size.height;
     } else {
