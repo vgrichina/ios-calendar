@@ -38,11 +38,14 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (void) setDefaults {
     self.backgroundColor = [UIColor clearColor];
 
-    CGGradientRef gradient = CGGradientCreateWithColors(NULL, (CFArrayRef)@[(id)[UIColor darkGrayColor].CGColor, (id)[UIColor lightGrayColor].CGColor], NULL);
+    CGGradientRef gradient = CGGradientCreateWithColors(NULL,
+        (CFArrayRef)@[
+                      (id)[UIColor colorWithRed:188/255. green:200/255. blue:215/255. alpha:1].CGColor,
+                      (id)[UIColor colorWithRed:125/255. green:150/255. blue:179/255. alpha:1].CGColor], NULL);
 
     self.monthBarBackgroundColor = [UIColor cx_colorWithGradient:gradient size:CGSizeMake(1, 48)];
     self.monthLabelColor = [UIColor whiteColor];
-    self.cellLabelNormalColor = [UIColor blackColor];
+    self.cellLabelNormalColor = [UIColor grayColor];
     self.cellLabelSelectedColor = [UIColor whiteColor];
     self.cellSelectedBackgroundColor = [UIColor grayColor];
     self.cellNormalBackgroundColor = [UIColor clearColor];
