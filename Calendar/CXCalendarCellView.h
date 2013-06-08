@@ -7,11 +7,12 @@
 //
 
 
-@interface CXCalendarCellView : UIButton {
-    NSUInteger _day;
-}
+@interface CXCalendarCellView : UIButton
 
 @property(nonatomic, assign) NSUInteger day;
+
+@property(nonatomic, assign) UIColor *normalBackgroundColor;
+@property(nonatomic, assign) UIColor *selectedBackgroundColor;
 
 - (NSDate *) dateWithBaseDate: (NSDate *) baseDate withCalendar: (NSCalendar *)calendar;
 

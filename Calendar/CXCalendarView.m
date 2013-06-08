@@ -43,7 +43,9 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     self.monthBarBackgroundColor = [UIColor colorWithGradient:gradient size:CGSizeMake(1, 48)];
     self.monthLabelColor = [UIColor whiteColor];
     self.cellLabelNormalColor = [UIColor blackColor];
-    self.cellLabelSelectedColor = [UIColor redColor];
+    self.cellLabelSelectedColor = [UIColor whiteColor];
+    self.cellSelectedBackgroundColor = [UIColor grayColor];
+    self.cellNormalBackgroundColor = [UIColor clearColor];
 
     _dateFormatter = [NSDateFormatter new];
     _dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
@@ -349,14 +351,17 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
         NSMutableArray *cells = [NSMutableArray array];
         for (NSUInteger i = 1; i <= 31; ++i) {
             CXCalendarCellView *cell = [[CXCalendarCellView new] autorelease];
-            cell.backgroundColor = [UIColor clearColor];
-            [cell setTitleColor:self.cellLabelNormalColor forState:UIControlStateNormal];
-            [cell setTitleColor:self.cellLabelSelectedColor forState:UIControlStateSelected];
             cell.tag = i;
             cell.day = i;
             [cell addTarget: self
                      action: @selector(touchedCellView:)
            forControlEvents: UIControlEventTouchUpInside];
+
+            cell.normalBackgroundColor = self.cellNormalBackgroundColor;
+            cell.selectedBackgroundColor = self.cellSelectedBackgroundColor;
+            [cell setTitleColor:self.cellLabelNormalColor forState:UIControlStateNormal];
+            [cell setTitleColor:self.cellLabelSelectedColor forState:UIControlStateSelected];
+
             [cells addObject:cell];
             [self.gridView addSubview: cell];
         }

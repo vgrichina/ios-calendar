@@ -10,10 +10,6 @@
 
 @implementation CXCalendarCellView
 
-- (NSUInteger) day {
-    return _day;
-}
-
 - (void) setDay: (NSUInteger) day {
     if (_day != day) {
         _day = day;
@@ -26,6 +22,17 @@
                                                fromDate:baseDate];
     components.day = self.day;
     return [calendar dateFromComponents:components];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+
+    if (selected) {
+        self.backgroundColor = self.selectedBackgroundColor;
+    } else {
+        self.backgroundColor = self.normalBackgroundColor;
+    }
 }
 
 @end

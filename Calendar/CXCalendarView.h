@@ -82,6 +82,8 @@
 @property(nonatomic, retain) UIColor *monthLabelColor;
 @property(nonatomic, retain) UIColor *cellLabelNormalColor;
 @property(nonatomic, retain) UIColor *cellLabelSelectedColor;
+@property(nonatomic, retain) UIColor *cellNormalBackgroundColor;
+@property(nonatomic, retain) UIColor *cellSelectedBackgroundColor;
 
 
 @end
