@@ -99,6 +99,8 @@
 		D54D978513D643A900B2C5C8 /* CalendarDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */; };
 		D54D978F13D6492400B2C5C8 /* libCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1013CE22CD0079A9C2 /* libCalendar.a */; };
 		D54D979613D6492400B2C5C8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 320AF8492C47A4D819F7C450 /* QuartzCore.framework */; };
+		D58C55BC1763CC4900F21C0F /* UIColor+CXCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = D58C55BA1763CC4900F21C0F /* UIColor+CXCalendar.h */; };
+		D58C55BD1763CC4900F21C0F /* UIColor+CXCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = D58C55BB1763CC4900F21C0F /* UIColor+CXCalendar.m */; };
 		D5B46D1413CE22CD0079A9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1313CE22CD0079A9C2 /* Foundation.framework */; };
 		D5B46D1F13CE22CD0079A9C2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1E13CE22CD0079A9C2 /* SenTestingKit.framework */; };
 		D5B46D2213CE22CD0079A9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B46D1313CE22CD0079A9C2 /* Foundation.framework */; };
@@ -320,6 +322,8 @@
 		D54D978013D643A900B2C5C8 /* CalendarDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDemoAppDelegate.m; sourceTree = "<group>"; };
 		D54D978213D643A900B2C5C8 /* CalendarDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarDemoViewController.h; sourceTree = "<group>"; };
 		D54D978413D643A900B2C5C8 /* CalendarDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarDemoViewController.m; sourceTree = "<group>"; };
+		D58C55BA1763CC4900F21C0F /* UIColor+CXCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CXCalendar.h"; sourceTree = "<group>"; };
+		D58C55BB1763CC4900F21C0F /* UIColor+CXCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CXCalendar.m"; sourceTree = "<group>"; };
 		D5B46D1013CE22CD0079A9C2 /* libCalendar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCalendar.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B46D1313CE22CD0079A9C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5B46D1713CE22CD0079A9C2 /* Calendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calendar-Prefix.pch"; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				D5D427B213CE279D00A90CCC /* CXCalendarCellView.m */,
 				1436B6C614D1AF8200DD7BEA /* CXMultidateCalendarView.h */,
 				1436B6C714D1AF8200DD7BEA /* CXMultidateCalendarView.m */,
+				D58C55BA1763CC4900F21C0F /* UIColor+CXCalendar.h */,
+				D58C55BB1763CC4900F21C0F /* UIColor+CXCalendar.m */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				D5D427AF13CE275100A90CCC /* CXCalendarView.h in Headers */,
 				D5D427B313CE279D00A90CCC /* CXCalendarCellView.h in Headers */,
 				1436B6C814D1AF8200DD7BEA /* CXMultidateCalendarView.h in Headers */,
+				D58C55BC1763CC4900F21C0F /* UIColor+CXCalendar.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +807,7 @@
 				D5D427B013CE275100A90CCC /* CXCalendarView.m in Sources */,
 				D5D427B413CE279D00A90CCC /* CXCalendarCellView.m in Sources */,
 				1436B6C914D1AF8200DD7BEA /* CXMultidateCalendarView.m in Sources */,
+				D58C55BD1763CC4900F21C0F /* UIColor+CXCalendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

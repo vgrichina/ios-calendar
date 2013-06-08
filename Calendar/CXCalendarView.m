@@ -8,9 +8,11 @@
 
 #import "CXCalendarView.h"
 
-#import "CXCalendarCellView.h"
-
 #import <QuartzCore/QuartzCore.h>
+
+#import "CXCalendarCellView.h"
+#import "UIColor+CXCalendar.h"
+
 
 static const CGFloat kGridMargin = 4;
 static const CGFloat kDefaultMonthBarButtonWidth = 60;
@@ -36,7 +38,9 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (void) setDefaults {
     self.backgroundColor = [UIColor clearColor];
 
-    self.monthBarBackgroundColor = [UIColor blueColor];
+    CGGradientRef gradient = CGGradientCreateWithColors(NULL, (CFArrayRef)@[(id)[UIColor darkGrayColor].CGColor, (id)[UIColor lightGrayColor].CGColor], NULL);
+
+    self.monthBarBackgroundColor = [UIColor colorWithGradient:gradient size:CGSizeMake(1, 48)];
     self.monthLabelColor = [UIColor whiteColor];
     self.cellLabelNormalColor = [UIColor blackColor];
     self.cellLabelSelectedColor = [UIColor redColor];

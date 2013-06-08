@@ -10,4 +10,5 @@
 
 @interface UIColor (CXCalendar)
 
++ (UIColor *)colorWithGradient:(CGGradientRef)gradient size:(CGSize)size;
 @end
