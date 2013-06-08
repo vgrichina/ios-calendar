@@ -11,7 +11,7 @@
 
 @implementation UIColor (CXCalendar)
 
-+ (UIColor *)colorWithGradient:(CGGradientRef)gradient size:(CGSize)size
++ (UIColor *)cx_colorWithGradient:(CGGradientRef)gradient size:(CGSize)size
 {
     UIGraphicsBeginImageContext(size);
     CGContextDrawLinearGradient(UIGraphicsGetCurrentContext(), gradient, CGPointZero, CGPointMake(size.width - 1,  size.height - 1), 0);
