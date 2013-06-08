@@ -79,9 +79,10 @@
 // Appearance
 // TODO: UIAppearance support
 @property(nonatomic, retain) UIColor *monthBarBackgroundColor;
-@property(nonatomic, retain) UIColor *monthLabelColor;
-@property(nonatomic, retain) UIColor *cellLabelNormalColor;
-@property(nonatomic, retain) UIColor *cellLabelSelectedColor;
+@property(nonatomic, retain) NSDictionary *monthLabelTextAttributes;
+@property(nonatomic, retain) NSDictionary *weekdayLabelTextAttributes;
+@property(nonatomic, retain) NSDictionary *cellLabelNormalTextAttributes;
+@property(nonatomic, retain) NSDictionary *cellLabelSelectedTextAttributes;
 @property(nonatomic, retain) UIColor *cellNormalBackgroundColor;
 @property(nonatomic, retain) UIColor *cellSelectedBackgroundColor;
 

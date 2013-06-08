@@ -12,6 +12,8 @@
 
 #import "CXCalendarCellView.h"
 #import "UIColor+CXCalendar.h"
+#import "UILabel+CXCalendar.h"
+#import "UIButton+CXCalendar.h"
 
 
 static const CGFloat kGridMargin = 4;
@@ -44,9 +46,26 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
                       (id)[UIColor colorWithRed:125/255. green:150/255. blue:179/255. alpha:1].CGColor], NULL);
 
     self.monthBarBackgroundColor = [UIColor cx_colorWithGradient:gradient size:CGSizeMake(1, 48)];
-    self.monthLabelColor = [UIColor whiteColor];
-    self.cellLabelNormalColor = [UIColor grayColor];
-    self.cellLabelSelectedColor = [UIColor whiteColor];
+    // TODO: Merge default text attributes when given custom ones!
+    self.monthLabelTextAttributes = @{
+        UITextAttributeTextColor : [UIColor whiteColor],
+        UITextAttributeFont : [UIFont systemFontOfSize:[UIFont buttonFontSize]],
+        UITextAttributeTextShadowColor : [UIColor grayColor],
+        UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, 1)]
+    };
+    self.weekdayLabelTextAttributes = @{
+        UITextAttributeTextColor : [UIColor blackColor],
+        UITextAttributeFont : [UIFont systemFontOfSize:[UIFont systemFontSize]],
+        // TODO: Check if we really want shadow here
+        UITextAttributeTextShadowColor : [UIColor grayColor],
+        UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, 1)]
+        };
+    self.cellLabelNormalTextAttributes = @{
+        UITextAttributeTextColor : [UIColor grayColor]
+    };
+    self.cellLabelSelectedTextAttributes = @{
+        UITextAttributeTextColor : [UIColor whiteColor]
+    };
     self.cellSelectedBackgroundColor = [UIColor grayColor];
     self.cellNormalBackgroundColor = [UIColor clearColor];
 
@@ -271,8 +290,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (UILabel *) monthLabel {
     if (!_monthLabel) {
         _monthLabel = [[[UILabel alloc] init] autorelease];
-        _monthLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthLabel.textColor = self.monthLabelColor;
+        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         _monthLabel.textAlignment = UITextAlignmentCenter;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.backgroundColor = [UIColor clearColor];
@@ -285,8 +303,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (!_monthBackButton) {
         _monthBackButton = [[[UIButton alloc] init] autorelease];
         [_monthBackButton setTitle: @"<" forState:UIControlStateNormal];
-        _monthBackButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthBackButton.titleLabel.textColor = self.monthLabelColor;
+        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         [_monthBackButton addTarget: self
                              action: @selector(monthBack)
                    forControlEvents: UIControlEventTouchUpInside];
@@ -299,8 +316,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (!_monthForwardButton) {
         _monthForwardButton = [[[UIButton alloc] init] autorelease];
         [_monthForwardButton setTitle: @">" forState:UIControlStateNormal];
-        _monthForwardButton.titleLabel.font = [UIFont systemFontOfSize: [UIFont buttonFontSize]];
-        _monthForwardButton.titleLabel.textColor = self.monthLabelColor;
+        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         [_monthForwardButton addTarget: self
                                 action: @selector(monthForward)
                       forControlEvents: UIControlEventTouchUpInside];
@@ -326,7 +342,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
             UILabel *label = [[[UILabel alloc] initWithFrame: CGRectZero] autorelease];
             label.tag = i;
-            label.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
+            [label cx_setTextAttributes:self.weekdayLabelTextAttributes];
             label.textAlignment = UITextAlignmentCenter;
             label.text = [[_dateFormatter shortWeekdaySymbols] objectAtIndex: index];
 
@@ -363,8 +379,8 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 
             cell.normalBackgroundColor = self.cellNormalBackgroundColor;
             cell.selectedBackgroundColor = self.cellSelectedBackgroundColor;
-            [cell setTitleColor:self.cellLabelNormalColor forState:UIControlStateNormal];
-            [cell setTitleColor:self.cellLabelSelectedColor forState:UIControlStateSelected];
+            [cell cx_setTitleTextAttributes:self.cellLabelNormalTextAttributes forState:UIControlStateNormal];
+            [cell cx_setTitleTextAttributes:self.cellLabelSelectedTextAttributes forState:UIControlStateSelected];
 
             [cells addObject:cell];
             [self.gridView addSubview: cell];
