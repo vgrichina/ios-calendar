@@ -223,8 +223,17 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     return nil;
 }
 
+- (void) applyStyles {
+    _monthBar.backgroundColor = self.monthBarBackgroundColor;
+    [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
+    [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
+    [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
+}
+
 - (void) layoutSubviews {
     [super layoutSubviews];
+
+    [self applyStyles];
 
     CGFloat top = 0;
 
@@ -280,7 +289,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (UIView *) monthBar {
     if (!_monthBar) {
         _monthBar = [[[UIView alloc] init] autorelease];
-        _monthBar.backgroundColor = self.monthBarBackgroundColor;
         _monthBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview: _monthBar];
     }
@@ -290,7 +298,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 - (UILabel *) monthLabel {
     if (!_monthLabel) {
         _monthLabel = [[[UILabel alloc] init] autorelease];
-        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         _monthLabel.textAlignment = UITextAlignmentCenter;
         _monthLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         _monthLabel.backgroundColor = [UIColor clearColor];
@@ -303,7 +310,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (!_monthBackButton) {
         _monthBackButton = [[[UIButton alloc] init] autorelease];
         [_monthBackButton setTitle: @"<" forState:UIControlStateNormal];
-        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         [_monthBackButton addTarget: self
                              action: @selector(monthBack)
                    forControlEvents: UIControlEventTouchUpInside];
@@ -316,7 +322,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     if (!_monthForwardButton) {
         _monthForwardButton = [[[UIButton alloc] init] autorelease];
         [_monthForwardButton setTitle: @">" forState:UIControlStateNormal];
-        [_monthLabel cx_setTextAttributes:self.monthLabelTextAttributes];
         [_monthForwardButton addTarget: self
                                 action: @selector(monthForward)
                       forControlEvents: UIControlEventTouchUpInside];
