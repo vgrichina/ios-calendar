@@ -56,8 +56,6 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     self.weekdayLabelTextAttributes = @{
         UITextAttributeTextColor : [UIColor blackColor],
         UITextAttributeFont : [UIFont systemFontOfSize:[UIFont systemFontSize]],
-        // TODO: Check if we really want shadow here
-        UITextAttributeTextShadowColor : [UIColor grayColor],
         UITextAttributeTextShadowOffset : [NSValue valueWithCGSize:CGSizeMake(0, 1)]
         };
     self.cellLabelNormalTextAttributes = @{
