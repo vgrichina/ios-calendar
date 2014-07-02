@@ -155,8 +155,12 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
 }
 
 - (CXCalendarCellView *) cellForDate: (NSDate *) date {
+    if (!date) {
+        return nil;
+    }
+
     NSDateComponents *components = [self.calendar components: NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
-                                                        fromDate: date];
+                                                    fromDate: date];
     if (components.month == self.displayedMonth &&
         components.year == self.displayedYear &&
         [self.dayCells count] >= components.day) {

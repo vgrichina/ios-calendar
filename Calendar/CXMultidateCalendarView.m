@@ -81,23 +81,22 @@
 
 - (void) touchedCellView: (CXCalendarCellView *) cellView {
     NSDate *date = [cellView dateWithBaseDate: self.displayedDate withCalendar: self.calendar];
-    if ([self.startDate isEqualToDate:self.endDate]) {
+    if ([self.startDate isEqualToDate: self.endDate]) {
         if ([self.startDate compare: date] == NSOrderedAscending) {
             self.endDate = date;
         } else {
-            id tmp = self.startDate;
+            self.endDate = self.startDate;
             self.startDate = date;
-            self.endDate = tmp;
         }
-        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectRangeFrom:to:)]) {
-            [self.delegate calendarView:self
-                     didSelectRangeFrom:self.startDate
-                                     to:self.endDate];
+        if ([self.delegate respondsToSelector: @selector(calendarView:didSelectRangeFrom:to:)]) {
+            [self.delegate calendarView: self
+                     didSelectRangeFrom: self.startDate
+                                     to: self.endDate];
         }
     } else {
         self.startDate = date;
         self.endDate = date;
-        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectDate:)]) {
+        if ([self.delegate respondsToSelector: @selector(calendarView:didSelectDate:)]) {
             [self.delegate calendarView: self didSelectDate: date];
         }
     }
