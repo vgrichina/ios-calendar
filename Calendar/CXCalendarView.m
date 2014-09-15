@@ -216,7 +216,11 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
             components.year == self.displayedYear &&
             [self.dayCells count] >= components.day) {
 
-        return [self.dayCells objectAtIndex: components.day - 1];
+        CXCalendarCellView* cell = [self.dayCells objectAtIndex: components.day - 1];
+        
+        [cell setBackgroundColor:[self.delegate backgroundCellColorForDate:date]];
+        
+        return cell;
     }
     return nil;
 }
@@ -278,6 +282,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     CGFloat cellWidth = (self.bounds.size.width - kGridMargin * 2) / 7.0;
     for (NSUInteger i = 0; i < [self.dayCells count]; ++i) {
         CXCalendarCellView *cellView = [self.dayCells objectAtIndex:i];
+        [cellView setBackgroundColor:[self.delegate backgroundCellColorForDate:[cellView dateWithBaseDate: self.displayedDate withCalendar: self.calendar]]];
         cellView.frame = CGRectMake(cellWidth * ((shift + i) % 7), cellHeight * ((shift + i) / 7),
                                     cellWidth, cellHeight);
         cellView.hidden = i >= range.length;

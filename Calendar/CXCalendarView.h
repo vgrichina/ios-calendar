@@ -18,6 +18,7 @@
 
 - (void) calendarView: (CXCalendarView *) calendarView
         didSelectDate: (NSDate *) selectedDate;
+- (UIColor*) backgroundCellColorForDate: (NSDate*) date;
 
 @end
 

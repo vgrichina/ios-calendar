@@ -40,4 +40,20 @@
     /*TTAlert([NSString stringWithFormat: @"Selected date: %@", date]);*/
 }
 
+- (UIColor*) backgroundCellColorForDate: (NSDate*) date {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components: NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit
+                                                                   fromDate: date];
+    if (components.month == 4 &&
+        components.year == 2013 &&
+        components.day == 1) {
+        return [UIColor redColor];
+    } else if (components.month == 4 &&
+               components.year == 2013 &&
+               components.day == 8) {
+        return [UIColor orangeColor];
+    }
+    
+    return [UIColor whiteColor];
+}
+
 @end
