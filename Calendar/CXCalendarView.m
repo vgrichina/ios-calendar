@@ -46,6 +46,7 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
                       (id)[UIColor colorWithRed:125/255. green:150/255. blue:179/255. alpha:1].CGColor], NULL);
 
     self.monthBarBackgroundColor = [UIColor cx_colorWithGradient:gradient size:CGSizeMake(1, 48)];
+    CGGradientRelease(gradient);
     // TODO: Merge default text attributes when given custom ones!
     self.monthLabelTextAttributes = @{
         UITextAttributeTextColor : [UIColor whiteColor],
@@ -83,6 +84,15 @@ static const CGFloat kDefaultMonthBarButtonWidth = 60;
     [_selectedDate release];
     [_displayedDate release];
     [_dateFormatter release];
+    [_weekdayNameLabels release];
+    [_dayCells release];
+    [_monthBarBackgroundColor release];
+    [_monthLabelTextAttributes release];
+    [_weekdayLabelTextAttributes release];
+    [_cellLabelNormalTextAttributes release];
+    [_cellLabelSelectedTextAttributes release];
+    [_cellNormalBackgroundColor release];
+    [_cellSelectedBackgroundColor release];
 
     [super dealloc];
 }
